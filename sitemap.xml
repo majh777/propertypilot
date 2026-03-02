@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://majh777.github.io/propertypilot/about.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
-  <url><loc>https://majh777.github.io/propertypilot/checklist.html</loc><lastmod>2026-03-03</lastmod><priority>0.7</priority></url>
-  <url><loc>https://majh777.github.io/propertypilot/comparison.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
-  <url><loc>https://majh777.github.io/propertypilot/contact.html</loc><lastmod>2026-03-03</lastmod><priority>0.7</priority></url>
-  <url><loc>https://majh777.github.io/propertypilot/faq.html</loc><lastmod>2026-03-03</lastmod><priority>0.7</priority></url>
-  <url><loc>https://majh777.github.io/propertypilot/getting-started.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/about.html</loc><lastmod>2026-03-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/checklist.html</loc><lastmod>2026-03-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/comparison.html</loc><lastmod>2026-03-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/contact.html</loc><lastmod>2026-03-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/faq.html</loc><lastmod>2026-03-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/getting-started.html</loc><lastmod>2026-03-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/glossary.html</loc><lastmod>2026-03-03</lastmod><priority>0.6</priority></url>
-  <url><loc>https://majh777.github.io/propertypilot/integrations.html</loc><lastmod>2026-03-03</lastmod><priority>0.7</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/index.html</loc><lastmod>2026-03-03</lastmod><priority>1.0</priority></url>
-  <url><loc>https://majh777.github.io/propertypilot/testimonials.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/integrations.html</loc><lastmod>2026-03-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/portfolio-demo.html</loc><lastmod>2026-03-03</lastmod><priority>0.9</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/pricing-optimizer.html</loc><lastmod>2026-03-03</lastmod><priority>0.9</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/privacy.html</loc><lastmod>2026-03-03</lastmod><priority>0.6</priority></url>
@@ -17,6 +16,7 @@
   <url><loc>https://majh777.github.io/propertypilot/roi-guide.html</loc><lastmod>2026-03-03</lastmod><priority>0.9</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/screening-demo.html</loc><lastmod>2026-03-03</lastmod><priority>0.9</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/terms.html</loc><lastmod>2026-03-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/testimonials.html</loc><lastmod>2026-03-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/valuation-tool.html</loc><lastmod>2026-03-03</lastmod><priority>0.9</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/blog/5-ways-ai-reduces-vacancy-rates.html</loc><lastmod>2026-03-03</lastmod><priority>0.7</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/blog/ai-powered-energy-efficiency-buildings.html</loc><lastmod>2026-03-03</lastmod><priority>0.7</priority></url>
@@ -35,13 +35,33 @@
   <url><loc>https://majh777.github.io/propertypilot/blog/roi-ai-property-management-real-numbers.html</loc><lastmod>2026-03-03</lastmod><priority>0.7</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/blog/smart-home-technology-property-managers-guide.html</loc><lastmod>2026-03-03</lastmod><priority>0.9</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/case-studies/affordable-housing-atlanta.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/beachfront-condo-san-diego.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/campus-housing-michigan.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/cannabis-facility-california.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/cold-storage-wisconsin.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/case-studies/commercial-office-nyc.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/coworking-denver.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/coworking-portland.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/data-center-virginia.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/hotel-conversion-nashville.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/index.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/case-studies/industrial-warehouse-dallas.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/case-studies/luxury-condo-miami.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/luxury-rental-la.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/medical-office-houston.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/medical-office-phoenix.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/case-studies/mixed-use-chicago.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/mobile-home-park-florida.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/multifamily-seattle.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/retail-strip-denver.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/retail-strip-phoenix.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/self-storage-austin.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/self-storage-las-vegas.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/case-studies/senior-living-florida.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/shopping-mall-renovation.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/case-studies/single-family-texas.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/case-studies/student-housing-boston.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://majh777.github.io/propertypilot/case-studies/townhome-dc.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/case-studies/vacation-rental-hawaii.html</loc><lastmod>2026-03-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/guides/ai-lead-generation.html</loc><lastmod>2026-03-03</lastmod><priority>0.9</priority></url>
   <url><loc>https://majh777.github.io/propertypilot/guides/ai-market-analysis.html</loc><lastmod>2026-03-03</lastmod><priority>0.9</priority></url>
