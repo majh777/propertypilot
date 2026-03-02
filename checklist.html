@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Readiness Checklist for Property Managers | PropertyPilot</title>
+<meta name="description" content="Interactive checklist to assess your property management business readiness for AI implementation. Evaluate data, systems, processes, and team preparedness.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://majh777.github.io/propertypilot/checklist.html">
+<meta property="og:title" content="AI Readiness Checklist for Property Managers | PropertyPilot">
+<meta property="og:description" content="Interactive checklist to assess your property management business readiness for AI implementation. Evaluate data, systems, processes, and team preparedness.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majh777.github.io/propertypilot/checklist.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Readiness Checklist for Property Managers | PropertyPilot">
+<meta name="twitter:description" content="Interactive checklist to assess your property management business readiness for AI implementation. Evaluate data, systems, processes, and team preparedness.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;line-height:1.7}
+.header{background:#1a1a2e;border-bottom:1px solid #2a2a3e;padding:16px 20px}
+.header .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.header .nav a{color:#7c3aed;text-decoration:none;font-weight:600;margin:0 10px}
+.header .nav a:hover{color:#a78bfa}
+.header .logo{font-size:1.4em;font-weight:800;color:#fff}
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)}
+.hero h1{font-size:2.4em;font-weight:800;background:linear-gradient(135deg,#7c3aed,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px;max-width:800px;margin-left:auto;margin-right:auto}
+.hero p{font-size:1.1em;color:#a0a0b0;max-width:600px;margin:0 auto 30px}
+.cta{background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;padding:12px 32px;border-radius:8px;text-decoration:none;font-weight:600;display:inline-block;margin:20px 10px}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,58,237,0.4)}
+.content{max-width:1000px;margin:0 auto;padding:40px 20px}
+.progress-container{background:#1a1a2e;padding:20px;border-radius:12px;margin:30px 0;text-align:center}
+.progress-bar{background:#2a2a3e;height:12px;border-radius:6px;overflow:hidden;margin:10px 0}
+.progress-fill{background:linear-gradient(135deg,#7c3aed,#3b82f6);height:100%;width:0%;transition:width 0.3s ease;border-radius:6px}
+.progress-text{color:#7c3aed;font-weight:600;margin-top:10px}
+.category{background:#1a1a2e;margin:30px 0;border-radius:12px;overflow:hidden}
+.category-header{background:#2a2a3e;padding:20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.category-header:hover{background:#3a3a4e}
+.category-title{font-size:1.3em;font-weight:600;color:#7c3aed}
+.category-score{background:#3a3a4e;padding:6px 12px;border-radius:6px;font-size:0.9em;font-weight:600}
+.category-icon{font-size:1.2em;margin-right:10px}
+.expand-icon{transition:transform 0.3s ease}
+.expanded .expand-icon{transform:rotate(180deg)}
+.category-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
+.expanded .category-content{max-height:2000px}
+.checklist-item{background:#2a2a3e;margin:1px 0;padding:20px;border-left:4px solid transparent;transition:all 0.3s ease}
+.checklist-item:hover{background:#3a3a4e}
+.checklist-item.checked{border-left-color:#10b981;background:#1e3a3a}
+.checkbox-container{display:flex;align-items:flex-start;cursor:pointer}
+.checkbox{width:20px;height:20px;border:2px solid #7c3aed;border-radius:4px;margin-right:15px;margin-top:2px;flex-shrink:0;position:relative;transition:all 0.3s ease}
+.checkbox.checked{background:#10b981;border-color:#10b981}
+.checkbox.checked::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-weight:bold;font-size:12px}
+.checkbox-content{flex:1}
+.checkbox-title{font-weight:600;color:#fff;margin-bottom:5px}
+.checkbox-description{color:#c0c0c0;font-size:0.95em;line-height:1.6}
+.recommendations{background:#1a1a2e;padding:30px;border-radius:12px;margin:40px 0;text-align:center}
+.score-display{font-size:3em;font-weight:800;color:#7c3aed;margin:20px 0}
+.score-label{color:#a0a0b0;font-size:1.1em;margin-bottom:20px}
+.recommendation-card{background:#2a2a3e;padding:20px;border-radius:8px;margin:15px 0;text-align:left}
+.recommendation-title{color:#7c3aed;font-weight:600;margin-bottom:10px}
+.level-indicator{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.8em;font-weight:600;text-transform:uppercase}
+.level-beginner{background:#ef4444;color:#fff}
+.level-intermediate{background:#f59e0b;color:#fff}
+.level-advanced{background:#10b981;color:#fff}
+.level-expert{background:#7c3aed;color:#fff}
+.actions{margin:30px 0;text-align:center}
+.reset-btn{background:#ef4444;color:#fff;padding:10px 20px;border:none;border-radius:6px;cursor:pointer;font-weight:600;margin:0 10px}
+.reset-btn:hover{background:#dc2626}
+.footer{background:#1a1a2e;border-top:1px solid #2a2a3e;padding:40px 20px;margin-top:60px;text-align:center}
+.footer-nav{display:flex;justify-content:center;gap:30px;margin-bottom:20px;flex-wrap:wrap}
+.footer-nav a{color:#7c3aed;text-decoration:none;font-weight:500}
+.footer-nav a:hover{color:#a78bfa}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="nav">
+    <div class="logo">🏠 PropertyPilot</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="guides.html">Guides</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>AI Readiness Checklist</h1>
+  <p>Assess your property management business readiness for AI implementation</p>
+  <a href="#" class="cta">Get PropertyPilot</a>
+  <a href="getting-started.html" class="cta">Get Started</a>
+</div>
+
+<div class="content">
+  
+  <div class="progress-container">
+    <h3>Your AI Readiness Score</h3>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-text">
+      <span id="completedItems">0</span> of <span id="totalItems">45</span> items completed 
+      (<span id="progressPercent">0</span>% ready)
+    </div>
+  </div>
+
+  <p style="text-align:center;color:#a0a0b0;margin:30px 0">
+    Use this comprehensive checklist to evaluate your organization's readiness for AI implementation. 
+    Check off items as you complete them to track your progress.
+  </p>
+
+  <div class="category">
+    <div class="category-header" onclick="toggleCategory(this)">
+      <div style="display:flex;align-items:center">
+        <span class="category-icon">📊</span>
+        <span class="category-title">Data Foundation & Quality</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:15px">
+        <span class="category-score" id="score-data">0/12</span>
+        <span class="expand-icon">▼</span>
+      </div>
+    </div>
+    <div class="category-content">
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Property data is digitally stored and organized</div>
+            <div class="checkbox-description">All property information including addresses, unit details, square footage, and amenities are stored in digital format, not just on paper or scattered across multiple systems.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Tenant records are complete and up-to-date</div>
+            <div class="checkbox-description">Tenant information including contact details, lease terms, payment history, and communication records are current and accessible.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Financial data is accurately tracked</div>
+            <div class="checkbox-description">Income, expenses, cash flows, and financial reports are properly maintained with historical data for analysis.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Maintenance records are documented</div>
+            <div class="checkbox-description">Work orders, repair history, vendor information, and maintenance schedules are systematically recorded.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Market data sources are identified</div>
+            <div class="checkbox-description">You have access to comparable sales, rental rates, market trends, and local economic indicators for your markets.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Data quality standards are established</div>
+            <div class="checkbox-description">You have processes to ensure data accuracy, completeness, and consistency across all systems.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Historical data spans at least 2-3 years</div>
+            <div class="checkbox-description">Sufficient historical data exists to train AI models and identify meaningful patterns and trends.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Data backup and security measures are in place</div>
+            <div class="checkbox-description">Regular backups, security protocols, and data protection measures protect your valuable information.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Data can be exported in standard formats</div>
+            <div class="checkbox-description">Your current systems can export data in CSV, Excel, or API formats for AI system integration.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Photo and document management system exists</div>
+            <div class="checkbox-description">Property photos, documents, and files are organized and digitally accessible for AI analysis.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Communication logs are preserved</div>
+            <div class="checkbox-description">Email, phone, and text communications with tenants and vendors are archived for AI learning.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Performance metrics are tracked</div>
+            <div class="checkbox-description">KPIs like occupancy rates, tenant satisfaction, maintenance costs, and ROI are regularly measured.</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="category-header" onclick="toggleCategory(this)">
+      <div style="display:flex;align-items:center">
+        <span class="category-icon">💻</span>
+        <span class="category-title">Technology Infrastructure</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:15px">
+        <span class="category-score" id="score-tech">0/10</span>
+        <span class="expand-icon">▼</span>
+      </div>
+    </div>
+    <div class="category-content">
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Reliable high-speed internet connection</div>
+            <div class="checkbox-description">Stable broadband internet that can support cloud-based AI applications and real-time data processing.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Modern computers and devices</div>
+            <div class="checkbox-description">Up-to-date computers, tablets, and smartphones that can run modern property management software.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Cloud storage and computing comfort</div>
+            <div class="checkbox-description">Team is comfortable with cloud-based solutions and understands the benefits of remote data access.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Current software supports API integrations</div>
+            <div class="checkbox-description">Existing property management, accounting, or CRM software can connect with other systems via APIs.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Basic IT support is available</div>
+            <div class="checkbox-description">Internal or external IT support can help with software setup, troubleshooting, and maintenance.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Mobile device compatibility requirements met</div>
+            <div class="checkbox-description">Smartphones and tablets can support mobile apps for on-the-go property management.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Security protocols are established</div>
+            <div class="checkbox-description">Network security, firewalls, antivirus, and user access controls protect your systems and data.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Software budget is allocated</div>
+            <div class="checkbox-description">Budget planning includes funds for AI software subscriptions, setup costs, and ongoing technology expenses.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Multiple user access capability</div>
+            <div class="checkbox-description">Systems can support multiple users with appropriate permission levels and role-based access.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Disaster recovery plan exists</div>
+            <div class="checkbox-description">Plans and procedures are in place for system outages, data recovery, and business continuity.</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="category-header" onclick="toggleCategory(this)">
+      <div style="display:flex;align-items:center">
+        <span class="category-icon">⚙️</span>
+        <span class="category-title">Process & Workflow Readiness</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:15px">
+        <span class="category-score" id="score-process">0/12</span>
+        <span class="expand-icon">▼</span>
+      </div>
+    </div>
+    <div class="category-content">
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Current processes are documented</div>
+            <div class="checkbox-description">Existing workflows for tenant management, maintenance, leasing, and administration are clearly documented.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Pain points and inefficiencies are identified</div>
+            <div class="checkbox-description">You've identified where current processes are slow, error-prone, or resource-intensive.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Automation priorities are defined</div>
+            <div class="checkbox-description">You know which tasks and processes would benefit most from AI automation.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Quality control measures exist</div>
+            <div class="checkbox-description">Systems are in place to monitor work quality and catch errors before they impact tenants or operations.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Response time standards are established</div>
+            <div class="checkbox-description">Clear expectations exist for how quickly different types of requests and issues should be handled.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Communication channels are organized</div>
+            <div class="checkbox-description">Structured approaches exist for tenant communication, vendor coordination, and internal team collaboration.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Compliance requirements are understood</div>
+            <div class="checkbox-description">You're aware of legal, regulatory, and industry compliance requirements that must be maintained.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Vendor management system exists</div>
+            <div class="checkbox-description">Organized approach to managing contractors, service providers, and vendor relationships.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Financial workflows are standardized</div>
+            <div class="checkbox-description">Consistent processes for rent collection, expense tracking, budgeting, and financial reporting.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Decision-making authority is clear</div>
+            <div class="checkbox-description">Team members know who can make decisions about tenants, maintenance, pricing, and other key areas.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Performance measurement is routine</div>
+            <div class="checkbox-description">Regular tracking and analysis of key performance indicators to measure operational success.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Change management experience exists</div>
+            <div class="checkbox-description">Previous experience successfully implementing new systems, processes, or technology changes.</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="category-header" onclick="toggleCategory(this)">
+      <div style="display:flex;align-items:center">
+        <span class="category-icon">👥</span>
+        <span class="category-title">Team & Organizational Readiness</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:15px">
+        <span class="category-score" id="score-team">0/11</span>
+        <span class="expand-icon">▼</span>
+      </div>
+    </div>
+    <div class="category-content">
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Leadership commitment to AI implementation</div>
+            <div class="checkbox-description">Management is committed to investing time, resources, and effort into successful AI implementation.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Team is open to technology adoption</div>
+            <div class="checkbox-description">Staff members are willing to learn new systems and adapt their workflows to incorporate AI tools.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Basic computer skills are present</div>
+            <div class="checkbox-description">Team members are comfortable with computers, software applications, and learning new digital tools.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Training time can be allocated</div>
+            <div class="checkbox-description">Schedule flexibility exists to provide adequate training time for AI system implementation.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Champion or super-user is identified</div>
+            <div class="checkbox-description">Someone on the team can serve as an internal expert and help others learn the new AI systems.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Communication about changes is effective</div>
+            <div class="checkbox-description">The team communicates well about changes, challenges, and improvements in workflows.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Roles and responsibilities are flexible</div>
+            <div class="checkbox-description">Team members can adapt their roles as AI automation changes how work gets done.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Success metrics are agreed upon</div>
+            <div class="checkbox-description">Team alignment on what successful AI implementation looks like and how to measure it.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Feedback culture is established</div>
+            <div class="checkbox-description">Team members are comfortable giving and receiving feedback about new processes and systems.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Workload management plan exists</div>
+            <div class="checkbox-description">Plans are in place to manage regular work while implementing and learning new AI systems.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checkbox-container" onclick="toggleCheckbox(this)">
+          <div class="checkbox"></div>
+          <div class="checkbox-content">
+            <div class="checkbox-title">Previous technology adoption success</div>
+            <div class="checkbox-description">The team has successfully adopted new technologies or software systems in the past.</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="recommendations" id="recommendations">
+    <h3>Your AI Readiness Assessment</h3>
+    <div class="score-display" id="overallScore">0%</div>
+    <div class="score-label">Overall Readiness Score</div>
+    <div class="level-indicator" id="readinessLevel">Assess your readiness above</div>
+    
+    <div id="recommendationsList"></div>
+  </div>
+
+  <div class="actions">
+    <button class="reset-btn" onclick="resetChecklist()">Reset Checklist</button>
+    <a href="#" class="cta">Get PropertyPilot Demo</a>
+    <a href="getting-started.html" class="cta">Implementation Guide</a>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="guides.html">Guides</a>
+    <a href="comparison.html">Compare</a>
+    <a href="roi-guide.html">ROI Guide</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="testimonials.html">Testimonials</a>
+  </div>
+  <p style="color:#666;margin-top:20px">© 2024 PropertyPilot. Transforming real estate with AI.</p>
+</div>
+
+<script>
+let checklistData = {
+  'data': { total: 12, checked: 0 },
+  'tech': { total: 10, checked: 0 },
+  'process': { total: 12, checked: 0 },
+  'team': { total: 11, checked: 0 }
+};
+
+const totalItems = 45;
+
+function toggleCategory(header) {
+  const category = header.parentElement;
+  const isExpanded = category.classList.contains('expanded');
+  
+  // Close all categories
+  document.querySelectorAll('.category').forEach(cat => {
+    cat.classList.remove('expanded');
+  });
+  
+  // Open clicked category if it wasn't already open
+  if (!isExpanded) {
+    category.classList.add('expanded');
+  }
+}
+
+function toggleCheckbox(container) {
+  const checkbox = container.querySelector('.checkbox');
+  const item = container.closest('.checklist-item');
+  const category = container.closest('.category');
+  const categoryKey = getCategoryKey(category);
+  
+  const isChecked = checkbox.classList.contains('checked');
+  
+  if (isChecked) {
+    checkbox.classList.remove('checked');
+    item.classList.remove('checked');
+    checklistData[categoryKey].checked--;
+  } else {
+    checkbox.classList.add('checked');
+    item.classList.add('checked');
+    checklistData[categoryKey].checked++;
+  }
+  
+  updateProgress();
+  updateCategoryScore(categoryKey);
+  updateRecommendations();
+}
+
+function getCategoryKey(category) {
+  const title = category.querySelector('.category-title').textContent;
+  if (title.includes('Data')) return 'data';
+  if (title.includes('Technology')) return 'tech';
+  if (title.includes('Process')) return 'process';
+  if (title.includes('Team')) return 'team';
+  return 'data';
+}
+
+function updateCategoryScore(categoryKey) {
+  const scoreElement = document.getElementById(`score-${categoryKey}`);
+  const data = checklistData[categoryKey];
+  scoreElement.textContent = `${data.checked}/${data.total}`;
+}
+
+function updateProgress() {
+  let totalChecked = 0;
+  Object.values(checklistData).forEach(cat => {
+    totalChecked += cat.checked;
+  });
+  
+  const percentage = Math.round((totalChecked / totalItems) * 100);
+  
+  document.getElementById('progressFill').style.width = `${percentage}%`;
+  document.getElementById('completedItems').textContent = totalChecked;
+  document.getElementById('totalItems').textContent = totalItems;
+  document.getElementById('progressPercent').textContent = percentage;
+  document.getElementById('overallScore').textContent = `${percentage}%`;
+}
+
+function updateRecommendations() {
+  let totalChecked = 0;
+  Object.values(checklistData).forEach(cat => {
+    totalChecked += cat.checked;
+  });
+  
+  const percentage = Math.round((totalChecked / totalItems) * 100);
+  const levelIndicator = document.getElementById('readinessLevel');
+  const recommendationsList = document.getElementById('recommendationsList');
+  
+  let level, recommendations;
+  
+  if (percentage >= 90) {
+    level = 'Expert';
+    levelIndicator.className = 'level-indicator level-expert';
+    recommendations = `
+      <div class="recommendation-card">
+        <div class="recommendation-title">🚀 You're AI-Ready!</div>
+        <p>Excellent! Your organization is well-prepared for AI implementation. You can move forward with confidence and expect rapid, successful deployment.</p>
+      </div>
+      <div class="recommendation-card">
+        <div class="recommendation-title">⚡ Next Steps</div>
+        <p>Start with a pilot program, choose your AI platform, and begin implementation. Consider advanced features like predictive analytics and machine learning optimization.</p>
+      </div>
+    `;
+  } else if (percentage >= 75) {
+    level = 'Advanced';
+    levelIndicator.className = 'level-indicator level-advanced';
+    recommendations = `
+      <div class="recommendation-card">
+        <div class="recommendation-title">📈 Nearly Ready</div>
+        <p>Great progress! You're close to being AI-ready. Focus on completing the remaining items before implementation.</p>
+      </div>
+      <div class="recommendation-card">
+        <div class="recommendation-title">🔧 Areas to Address</div>
+        <p>Review unchecked items and create a plan to address them over the next 2-4 weeks. This preparation will ensure smoother AI implementation.</p>
+      </div>
+    `;
+  } else if (percentage >= 50) {
+    level = 'Intermediate';
+    levelIndicator.className = 'level-indicator level-intermediate';
+    recommendations = `
+      <div class="recommendation-card">
+        <div class="recommendation-title">⚖️ Moderate Readiness</div>
+        <p>You've made good progress but need to address several areas before AI implementation. Focus on data organization and process documentation.</p>
+      </div>
+      <div class="recommendation-card">
+        <div class="recommendation-title">📋 Priority Actions</div>
+        <p>Prioritize data quality, technology infrastructure, and team training. Plan 1-2 months of preparation before beginning AI implementation.</p>
+      </div>
+    `;
+  } else {
+    level = 'Beginner';
+    levelIndicator.className = 'level-indicator level-beginner';
+    recommendations = `
+      <div class="recommendation-card">
+        <div class="recommendation-title">🏗️ Foundation Building</div>
+        <p>Significant preparation is needed before AI implementation. Focus on building strong foundations in data, processes, and technology.</p>
+      </div>
+      <div class="recommendation-card">
+        <div class="recommendation-title">🎯 Start Here</div>
+        <p>Begin with data organization and digitization. Invest in team training and process documentation. Plan 3-6 months of preparation.</p>
+      </div>
+    `;
+  }
+  
+  levelIndicator.textContent = level;
+  recommendationsList.innerHTML = recommendations;
+}
+
+function resetChecklist() {
+  if (confirm('Are you sure you want to reset the entire checklist? This will uncheck all items.')) {
+    document.querySelectorAll('.checkbox.checked').forEach(checkbox => {
+      checkbox.classList.remove('checked');
+    });
+    
+    document.querySelectorAll('.checklist-item.checked').forEach(item => {
+      item.classList.remove('checked');
+    });
+    
+    // Reset data
+    Object.keys(checklistData).forEach(key => {
+      checklistData[key].checked = 0;
+      updateCategoryScore(key);
+    });
+    
+    updateProgress();
+    updateRecommendations();
+  }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+  updateProgress();
+  updateRecommendations();
+  Object.keys(checklistData).forEach(key => {
+    updateCategoryScore(key);
+  });
+});
+</script>
+
+</body>
+</html>
