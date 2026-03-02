@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://majh777.github.io/propertypilot/sitemap.xml
