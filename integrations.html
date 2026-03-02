@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PropertyPilot Integrations | Connect Your Real Estate Software Stack</title>
+<meta name="description" content="PropertyPilot integrates with 50+ property management, accounting, CRM, and marketing platforms. Seamless data sync and workflow automation across your entire tech stack.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://majh777.github.io/propertypilot/integrations.html">
+<meta property="og:title" content="PropertyPilot Integrations | Connect Your Real Estate Software Stack">
+<meta property="og:description" content="PropertyPilot integrates with 50+ property management, accounting, CRM, and marketing platforms. Seamless data sync and workflow automation across your entire tech stack.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majh777.github.io/propertypilot/integrations.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PropertyPilot Integrations | Connect Your Real Estate Software Stack">
+<meta name="twitter:description" content="PropertyPilot integrations with 50+ property management, accounting, CRM, and marketing platforms. Seamless data sync and workflow automation.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;line-height:1.7}
+.header{background:#1a1a2e;border-bottom:1px solid #2a2a3e;padding:16px 20px}
+.header .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.header .nav a{color:#7c3aed;text-decoration:none;font-weight:600;margin:0 10px}
+.header .nav a:hover{color:#a78bfa}
+.header .logo{font-size:1.4em;font-weight:800;color:#fff}
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)}
+.hero h1{font-size:2.4em;font-weight:800;background:linear-gradient(135deg,#7c3aed,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px;max-width:800px;margin-left:auto;margin-right:auto}
+.hero p{font-size:1.1em;color:#a0a0b0;max-width:600px;margin:0 auto 30px}
+.cta{background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;padding:12px 32px;border-radius:8px;text-decoration:none;font-weight:600;display:inline-block;margin:20px 10px}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,58,237,0.4)}
+.content{max-width:1200px;margin:0 auto;padding:40px 20px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin:40px 0}
+.stat-card{background:#1a1a2e;padding:25px;border-radius:8px;text-align:center}
+.stat-number{font-size:2.5em;font-weight:800;color:#7c3aed;margin:10px 0}
+.stat-label{color:#a0a0b0;text-transform:uppercase;letter-spacing:1px;font-size:0.9em}
+.category-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;margin:40px 0}
+.category-nav a{background:#2a2a3e;color:#7c3aed;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600}
+.category-nav a:hover{background:#3a3a4e;color:#a78bfa}
+.category-nav a.active{background:#7c3aed;color:#fff}
+.section{margin:60px 0}
+.section-title{font-size:2.2em;color:#7c3aed;margin-bottom:30px;text-align:center}
+.section-subtitle{text-align:center;color:#a0a0b0;margin-bottom:40px;font-size:1.1em}
+.integrations-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:25px;margin:40px 0}
+.integration-card{background:#1a1a2e;border-radius:12px;overflow:hidden;border:1px solid #2a2a3e;transition:transform 0.3s ease,box-shadow 0.3s ease}
+.integration-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(124,58,237,0.2)}
+.integration-header{background:#2a2a3e;padding:20px;display:flex;align-items:center}
+.integration-logo{width:50px;height:50px;background:#7c3aed;border-radius:8px;margin-right:15px;display:flex;align-items:center;justify-content:center;font-size:1.5em;color:#fff;font-weight:bold}
+.integration-info h3{color:#fff;margin:0 0 5px;font-size:1.2em}
+.integration-info p{color:#a0a0b0;margin:0;font-size:0.9em}
+.integration-body{padding:20px}
+.integration-description{color:#c0c0c0;margin-bottom:15px;font-size:0.95em}
+.integration-features{margin:15px 0}
+.integration-features h4{color:#7c3aed;font-size:0.9em;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.integration-features ul{list-style:none;padding:0}
+.integration-features li{color:#a0a0b0;font-size:0.85em;margin:4px 0;padding-left:15px;position:relative}
+.integration-features li::before{content:'✓';color:#10b981;font-weight:bold;position:absolute;left:0}
+.integration-status{display:flex;justify-content:space-between;align-items:center;margin-top:15px;padding-top:15px;border-top:1px solid #2a2a3e}
+.status-badge{padding:4px 12px;border-radius:20px;font-size:0.8em;font-weight:600;text-transform:uppercase}
+.status-available{background:#10b981;color:#fff}
+.status-coming-soon{background:#f59e0b;color:#fff}
+.status-beta{background:#3b82f6;color:#fff}
+.setup-time{color:#7c3aed;font-size:0.85em;font-weight:600}
+.featured-integration{border:2px solid #7c3aed;box-shadow:0 0 20px rgba(124,58,237,0.3)}
+.integration-category{margin:50px 0}
+.category-header{background:#1a1a2e;padding:30px;border-radius:12px;margin-bottom:30px;text-align:center}
+.category-icon{font-size:3em;margin-bottom:15px}
+.category-title{font-size:2em;color:#7c3aed;margin-bottom:10px}
+.category-description{color:#a0a0b0;font-size:1.1em}
+.api-section{background:#1a1a2e;padding:40px;border-radius:12px;margin:40px 0}
+.api-section h3{color:#7c3aed;margin-bottom:20px}
+.api-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin:30px 0}
+.api-feature{background:#2a2a3e;padding:20px;border-radius:8px}
+.api-feature h4{color:#a78bfa;margin-bottom:10px}
+.api-feature p{color:#c0c0c0;font-size:0.95em}
+.footer{background:#1a1a2e;border-top:1px solid #2a2a3e;padding:40px 20px;margin-top:60px;text-align:center}
+.footer-nav{display:flex;justify-content:center;gap:30px;margin-bottom:20px;flex-wrap:wrap}
+.footer-nav a{color:#7c3aed;text-decoration:none;font-weight:500}
+.footer-nav a:hover{color:#a78bfa}
+@media (max-width:768px){
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.integrations-grid{grid-template-columns:1fr}
+.hero h1{font-size:2em}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="nav">
+    <div class="logo">🏠 PropertyPilot</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="guides.html">Guides</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>PropertyPilot Integrations</h1>
+  <p>Connect your entire real estate tech stack with AI-powered automation and seamless data sync</p>
+  <a href="#" class="cta">View All Integrations</a>
+  <a href="getting-started.html" class="cta">Get Started</a>
+</div>
+
+<div class="content">
+  
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Integrations Available</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">99.9%</div>
+      <div class="stat-label">Data Sync Reliability</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">5min</div>
+      <div class="stat-label">Average Setup Time</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">Real-time Sync</div>
+    </div>
+  </div>
+
+  <div class="category-nav">
+    <a href="#property-management" class="active">Property Management</a>
+    <a href="#accounting">Accounting & Finance</a>
+    <a href="#marketing">Marketing & Leasing</a>
+    <a href="#communication">Communication</a>
+    <a href="#maintenance">Maintenance & Services</a>
+    <a href="#analytics">Analytics & Reporting</a>
+  </div>
+
+  <section class="section integration-category" id="property-management">
+    <div class="category-header">
+      <div class="category-icon">🏢</div>
+      <h2 class="category-title">Property Management Systems</h2>
+      <p class="category-description">Seamlessly sync with leading property management platforms for unified operations</p>
+    </div>
+    
+    <div class="integrations-grid">
+      
+      <div class="integration-card featured-integration">
+        <div class="integration-header">
+          <div class="integration-logo">AF</div>
+          <div class="integration-info">
+            <h3>AppFolio</h3>
+            <p>Enterprise Property Management</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Complete bi-directional sync with AppFolio for properties, tenants, leases, and financial data. AI enhancements overlay your existing AppFolio workflow.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Real-time property and tenant sync</li>
+              <li>Automated lease data import</li>
+              <li>Financial reporting integration</li>
+              <li>Maintenance request routing</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">5 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">BD</div>
+          <div class="integration-info">
+            <h3>Buildium</h3>
+            <p>Property Management Software</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Sync properties, tenants, and accounting data from Buildium while adding AI-powered insights and automation.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Property portfolio synchronization</li>
+              <li>Tenant screening enhancement</li>
+              <li>Rent roll automation</li>
+              <li>Maintenance optimization</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">10 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">YD</div>
+          <div class="integration-info">
+            <h3>Yardi</h3>
+            <p>Commercial Real Estate Platform</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Enterprise-grade integration with Yardi systems for large portfolio management with AI enhancement capabilities.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Enterprise data synchronization</li>
+              <li>Multi-property management</li>
+              <li>Advanced reporting overlay</li>
+              <li>Workflow automation</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">15 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">RM</div>
+          <div class="integration-info">
+            <h3>RentManager</h3>
+            <p>Property Management Suite</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Connect RentManager data with PropertyPilot's AI for enhanced tenant management and operational insights.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Tenant data synchronization</li>
+              <li>Lease management integration</li>
+              <li>Payment tracking automation</li>
+              <li>Performance analytics</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-beta">Beta</span>
+            <span class="setup-time">8 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">TC</div>
+          <div class="integration-info">
+            <h3>TenantCloud</h3>
+            <p>Small Property Management</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Perfect for smaller landlords using TenantCloud who want to add AI capabilities to their property management.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Basic property sync</li>
+              <li>Tenant communication enhancement</li>
+              <li>Rent collection automation</li>
+              <li>Simple reporting</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">5 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section integration-category" id="accounting">
+    <div class="category-header">
+      <div class="category-icon">📊</div>
+      <h2 class="category-title">Accounting & Finance</h2>
+      <p class="category-description">Integrate with financial systems for comprehensive business insights and automation</p>
+    </div>
+    
+    <div class="integrations-grid">
+      
+      <div class="integration-card featured-integration">
+        <div class="integration-header">
+          <div class="integration-logo">QB</div>
+          <div class="integration-info">
+            <h3>QuickBooks Online</h3>
+            <p>Small Business Accounting</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Seamless integration with QuickBooks for automated bookkeeping, expense tracking, and financial reporting with AI insights.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Automated transaction categorization</li>
+              <li>Real-time financial dashboards</li>
+              <li>Expense tracking and allocation</li>
+              <li>Tax preparation assistance</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">3 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">XR</div>
+          <div class="integration-info">
+            <h3>Xero</h3>
+            <p>Cloud Accounting Platform</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Connect Xero for comprehensive financial management with AI-powered insights and automated reconciliation.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Bank feed automation</li>
+              <li>Invoice and payment tracking</li>
+              <li>Financial performance analytics</li>
+              <li>Multi-currency support</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">5 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">ST</div>
+          <div class="integration-info">
+            <h3>Stripe</h3>
+            <p>Payment Processing</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Process rent payments and fees through Stripe with automatic reconciliation and tenant payment tracking.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Automated rent collection</li>
+              <li>Payment failure handling</li>
+              <li>Fee calculation and processing</li>
+              <li>Real-time payment notifications</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">5 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">PP</div>
+          <div class="integration-info">
+            <h3>PayPal</h3>
+            <p>Digital Payments</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Accept rent payments via PayPal with automated tracking and reconciliation for tenant convenience.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>PayPal payment acceptance</li>
+              <li>Automatic payment matching</li>
+              <li>Dispute management</li>
+              <li>International payments</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">3 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section integration-category" id="marketing">
+    <div class="category-header">
+      <div class="category-icon">📢</div>
+      <h2 class="category-title">Marketing & Leasing</h2>
+      <p class="category-description">Automate your marketing and streamline the leasing process with smart integrations</p>
+    </div>
+    
+    <div class="integrations-grid">
+      
+      <div class="integration-card featured-integration">
+        <div class="integration-header">
+          <div class="integration-logo">ZL</div>
+          <div class="integration-info">
+            <h3>Zillow Rental Manager</h3>
+            <p>Rental Listing Platform</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Automatically sync property listings to Zillow with AI-optimized descriptions, photos, and pricing for maximum visibility.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Automated listing publication</li>
+              <li>AI-generated descriptions</li>
+              <li>Dynamic pricing updates</li>
+              <li>Lead capture and routing</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">5 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">AP</div>
+          <div class="integration-info">
+            <h3>Apartments.com</h3>
+            <p>Apartment Listing Service</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Streamline listings on Apartments.com with automated updates and AI-enhanced property descriptions.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Multi-property listing sync</li>
+              <li>Availability tracking</li>
+              <li>Automated photo management</li>
+              <li>Lead qualification</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">7 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">CL</div>
+          <div class="integration-info">
+            <h3>Craigslist</h3>
+            <p>Classified Advertising</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Post and manage Craigslist ads with automated renewal, spam detection, and response management.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Automated ad posting</li>
+              <li>Response screening</li>
+              <li>Ad renewal scheduling</li>
+              <li>Performance tracking</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-beta">Beta</span>
+            <span class="setup-time">10 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">FB</div>
+          <div class="integration-info">
+            <h3>Facebook Marketplace</h3>
+            <p>Social Media Listings</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Leverage Facebook's massive reach with automated marketplace listings and social media marketing.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Marketplace listing automation</li>
+              <li>Social sharing optimization</li>
+              <li>Message response automation</li>
+              <li>Audience targeting</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-coming-soon">Coming Soon</span>
+            <span class="setup-time">TBD</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section integration-category" id="communication">
+    <div class="category-header">
+      <div class="category-icon">💬</div>
+      <h2 class="category-title">Communication & CRM</h2>
+      <p class="category-description">Enhance tenant and prospect communication with intelligent automation</p>
+    </div>
+    
+    <div class="integrations-grid">
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">TW</div>
+          <div class="integration-info">
+            <h3>Twilio</h3>
+            <p>Communication Platform</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Power SMS, voice calls, and WhatsApp messaging with AI-driven automation for tenant communication.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Automated SMS notifications</li>
+              <li>Voice call routing</li>
+              <li>WhatsApp integration</li>
+              <li>Message templates and scheduling</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">5 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">MG</div>
+          <div class="integration-info">
+            <h3>Mailgun</h3>
+            <p>Email Service Platform</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Reliable email delivery for automated notifications, marketing campaigns, and tenant communications.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Transactional email delivery</li>
+              <li>Email template management</li>
+              <li>Delivery tracking and analytics</li>
+              <li>Spam protection</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">3 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">SF</div>
+          <div class="integration-info">
+            <h3>Salesforce</h3>
+            <p>CRM Platform</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Sync property leads and tenant data with Salesforce for comprehensive relationship management.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Lead and contact synchronization</li>
+              <li>Pipeline management</li>
+              <li>Activity tracking</li>
+              <li>Custom field mapping</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">15 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">HS</div>
+          <div class="integration-info">
+            <h3>HubSpot</h3>
+            <p>Marketing & Sales Hub</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Connect PropertyPilot with HubSpot for advanced marketing automation and lead nurturing campaigns.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Lead scoring and qualification</li>
+              <li>Email marketing automation</li>
+              <li>Customer journey tracking</li>
+              <li>ROI measurement</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-beta">Beta</span>
+            <span class="setup-time">10 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section integration-category" id="maintenance">
+    <div class="category-header">
+      <div class="category-icon">🔧</div>
+      <h2 class="category-title">Maintenance & Services</h2>
+      <p class="category-description">Streamline maintenance operations with smart vendor management and automation</p>
+    </div>
+    
+    <div class="integrations-grid">
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">HO</div>
+          <div class="integration-info">
+            <h3>HomeAdvisor</h3>
+            <p>Service Professional Network</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Connect with verified contractors and service professionals for maintenance requests with AI matching.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Contractor matching and rating</li>
+              <li>Automated quote requests</li>
+              <li>Job tracking and completion</li>
+              <li>Quality assurance monitoring</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-beta">Beta</span>
+            <span class="setup-time">8 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">HD</div>
+          <div class="integration-info">
+            <h3>Home Depot Pro</h3>
+            <p>Commercial Building Supplies</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Streamline supply ordering and inventory management with automated purchasing and delivery coordination.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Automated supply ordering</li>
+              <li>Bulk pricing and discounts</li>
+              <li>Delivery scheduling</li>
+              <li>Expense tracking</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-coming-soon">Coming Soon</span>
+            <span class="setup-time">TBD</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">AN</div>
+          <div class="integration-info">
+            <h3>Angie's List</h3>
+            <p>Service Provider Directory</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Access pre-screened service providers with reviews and ratings for reliable maintenance solutions.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Provider screening and vetting</li>
+              <li>Review and rating integration</li>
+              <li>Service request matching</li>
+              <li>Performance tracking</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-coming-soon">Coming Soon</span>
+            <span class="setup-time">TBD</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section integration-category" id="analytics">
+    <div class="category-header">
+      <div class="category-icon">📈</div>
+      <h2 class="category-title">Analytics & Business Intelligence</h2>
+      <p class="category-description">Advanced analytics and reporting integrations for data-driven decision making</p>
+    </div>
+    
+    <div class="integrations-grid">
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">GA</div>
+          <div class="integration-info">
+            <h3>Google Analytics</h3>
+            <p>Web Analytics Platform</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Track property website performance, lead sources, and conversion rates with advanced analytics integration.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Website traffic analysis</li>
+              <li>Lead source attribution</li>
+              <li>Conversion tracking</li>
+              <li>Custom dashboard creation</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">5 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">TB</div>
+          <div class="integration-info">
+            <h3>Tableau</h3>
+            <p>Data Visualization Platform</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Create advanced data visualizations and custom reports with PropertyPilot data in Tableau.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Custom dashboard creation</li>
+              <li>Advanced data visualization</li>
+              <li>Interactive reporting</li>
+              <li>Data export and analysis</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-beta">Beta</span>
+            <span class="setup-time">15 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="integration-card">
+        <div class="integration-header">
+          <div class="integration-logo">PB</div>
+          <div class="integration-info">
+            <h3>Power BI</h3>
+            <p>Microsoft Business Intelligence</p>
+          </div>
+        </div>
+        <div class="integration-body">
+          <div class="integration-description">
+            Connect PropertyPilot data to Microsoft Power BI for enterprise-grade reporting and analytics.
+          </div>
+          <div class="integration-features">
+            <h4>Features</h4>
+            <ul>
+              <li>Enterprise reporting</li>
+              <li>Data modeling and analysis</li>
+              <li>Automated refresh schedules</li>
+              <li>Mobile dashboard access</li>
+            </ul>
+          </div>
+          <div class="integration-status">
+            <span class="status-badge status-available">Available</span>
+            <span class="setup-time">10 min setup</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section api-section">
+    <h3>Custom Integrations & API</h3>
+    <p>Need a custom integration? PropertyPilot's robust API enables connections with virtually any system. Our development team can help build custom integrations for your specific needs.</p>
+    
+    <div class="api-features">
+      <div class="api-feature">
+        <h4>RESTful API</h4>
+        <p>Complete API access to all PropertyPilot data and functionality with comprehensive documentation and SDKs.</p>
+      </div>
+      
+      <div class="api-feature">
+        <h4>Webhook Support</h4>
+        <p>Real-time event notifications for instant data synchronization and automated workflow triggers.</p>
+      </div>
+      
+      <div class="api-feature">
+        <h4>Custom Development</h4>
+        <p>Our integration team can build custom connectors for enterprise systems and specialized software.</p>
+      </div>
+      
+      <div class="api-feature">
+        <h4>Bulk Data Operations</h4>
+        <p>High-performance data import/export capabilities for large-scale operations and migrations.</p>
+      </div>
+    </div>
+    
+    <div style="text-align:center;margin:30px 0">
+      <a href="contact.html" class="cta">Request Custom Integration</a>
+      <a href="#" class="cta">View API Documentation</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 style="text-align:center;color:#7c3aed;margin-bottom:30px">Ready to Connect Your Tech Stack?</h2>
+    
+    <p style="text-align:center;font-size:1.1em;margin:30px 0">PropertyPilot makes it easy to integrate with your existing systems and start seeing benefits immediately.</p>
+    
+    <div style="text-align:center;margin:40px 0">
+      <a href="#" class="cta" style="font-size:1.2em;padding:16px 40px">Start Free Trial</a>
+      <a href="getting-started.html" class="cta" style="font-size:1.2em;padding:16px 40px">Implementation Guide</a>
+    </div>
+    
+    <div style="text-align:center;color:#a0a0b0;margin-top:30px">
+      <p>✓ Free integration setup &nbsp;&nbsp; ✓ 24/7 technical support &nbsp;&nbsp; ✓ No long-term contracts</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer">
+  <div class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="guides.html">Guides</a>
+    <a href="comparison.html">Compare</a>
+    <a href="roi-guide.html">ROI Guide</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="testimonials.html">Testimonials</a>
+  </div>
+  <p style="color:#666;margin-top:20px">© 2024 PropertyPilot. Transforming real estate with AI.</p>
+</div>
+
+<script>
+// Smooth scrolling for category navigation
+document.querySelectorAll('.category-nav a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Update active state
+    document.querySelectorAll('.category-nav a').forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+    
+    // Scroll to section
+    const targetId = this.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Update active navigation based on scroll position
+window.addEventListener('scroll', function() {
+  const sections = document.querySelectorAll('.integration-category');
+  const navLinks = document.querySelectorAll('.category-nav a');
+  
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    const sectionHeight = section.offsetHeight;
+    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute('id');
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
