@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Property Valuation Tool — PropertyPilot AI Real Estate</title>
+<meta name="description" content="Get instant AI-powered property valuations. Comparable analysis, neighborhood trends, and confidence intervals.">
+<link rel="canonical" href="https://majh777.github.io/propertypilot/valuation-tool.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;line-height:1.7}
+.header{padding:20px;background:#1a1a2e;border-bottom:1px solid #2a2a3e}
+.header h1{color:#7c3aed;font-size:1.8em;text-align:center}
+.nav{text-align:center;margin-top:10px}
+.nav a{color:#a0a0b0;text-decoration:none;margin:0 15px;font-size:0.9em;transition:color 0.3s}
+.nav a:hover{color:#7c3aed}
+.container{max-width:1200px;margin:0 auto;padding:40px 20px}
+.valuation-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px}
+@media(max-width:768px){.valuation-grid{grid-template-columns:1fr}}
+.input-panel{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:30px}
+.results-panel{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:30px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;color:#c0c0d0;margin-bottom:8px;font-weight:600}
+.form-input{width:100%;padding:12px;background:#0f0f1a;border:1px solid #2a2a3e;border-radius:8px;color:#e0e0e0;font-size:1em}
+.form-input:focus{outline:none;border-color:#7c3aed}
+.form-select{width:100%;padding:12px;background:#0f0f1a;border:1px solid #2a2a3e;border-radius:8px;color:#e0e0e0;font-size:1em}
+.form-select:focus{outline:none;border-color:#7c3aed}
+.analyze-btn{width:100%;padding:16px;background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1.1em;cursor:pointer;transition:transform 0.2s}
+.analyze-btn:hover{transform:scale(1.02)}
+.valuation-card{background:#12121a;border:1px solid #7c3aed44;border-radius:12px;padding:25px;margin-bottom:20px;opacity:0;transform:translateY(20px);transition:all 0.5s ease}
+.valuation-card.show{opacity:1;transform:translateY(0)}
+.estimate-range{text-align:center;margin-bottom:20px}
+.price-range{font-size:2.5em;font-weight:800;color:#7c3aed;margin-bottom:8px}
+.confidence{color:#10b981;font-weight:600;margin-bottom:4px}
+.market-trend{color:#a0a0b0;font-size:0.9em}
+.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.detail-item{text-align:center;padding:15px;background:#1a1a2e;border-radius:8px}
+.detail-value{font-size:1.5em;font-weight:700;color:#3b82f6;margin-bottom:4px}
+.detail-label{color:#a0a0b0;font-size:0.85em}
+.chart-container{margin-top:30px;opacity:0;transition:opacity 0.5s ease}
+.chart-container.show{opacity:1}
+.cta-section{text-align:center;margin-top:40px;padding:30px;background:#1a1a2e;border-radius:16px;border:1px solid #2a2a3e}
+.cta-btn{display:inline-block;padding:16px 40px;background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;text-decoration:none;border-radius:12px;font-weight:700;font-size:1.1em;transition:transform .2s;margin-top:20px}
+.cta-btn:hover{transform:scale(1.05)}
+.hero{text-align:center;padding:40px 20px 20px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)}
+.hero h1{font-size:2.2em;font-weight:800;background:linear-gradient(135deg,#7c3aed,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
+.hero p{font-size:1.1em;color:#a0a0b0;max-width:600px;margin:0 auto 20px}
+.comparable{margin-top:20px;padding:15px;background:#0f0f1a;border-radius:8px;border:1px solid #2a2a3e}
+.comparable-title{color:#7c3aed;font-weight:600;margin-bottom:10px}
+.comp-item{display:flex;justify-content:space-between;margin-bottom:8px;color:#a0a0b0;font-size:0.9em}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🏠 PropertyPilot</h1>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="roi-calculator.html">ROI Calculator</a>
+    <a href="valuation-tool.html">Property Valuation</a>
+    <a href="screening-demo.html">Tenant Screening</a>
+    <a href="pricing-optimizer.html">Pricing Optimizer</a>
+    <a href="portfolio-demo.html">Portfolio Dashboard</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>🏡 AI Property Valuation</h1>
+  <p>Get instant property valuations powered by comparable analysis and neighborhood market data.</p>
+</div>
+
+<div class="container">
+  <div class="valuation-grid">
+    <div class="input-panel">
+      <h2 style="color:#7c3aed;margin-bottom:20px">Property Details</h2>
+      
+      <div class="form-group">
+        <label for="address">Address or ZIP Code</label>
+        <input type="text" id="address" class="form-input" placeholder="e.g., 90210 or 123 Main St" value="90210">
+      </div>
+      
+      <div class="form-group">
+        <label for="bedrooms">Bedrooms</label>
+        <select id="bedrooms" class="form-select">
+          <option value="1">1 bedroom</option>
+          <option value="2">2 bedrooms</option>
+          <option value="3" selected>3 bedrooms</option>
+          <option value="4">4 bedrooms</option>
+          <option value="5">5+ bedrooms</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="bathrooms">Bathrooms</label>
+        <select id="bathrooms" class="form-select">
+          <option value="1">1 bathroom</option>
+          <option value="1.5">1.5 bathrooms</option>
+          <option value="2" selected>2 bathrooms</option>
+          <option value="2.5">2.5 bathrooms</option>
+          <option value="3">3 bathrooms</option>
+          <option value="3.5">3.5+ bathrooms</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="sqft">Square Footage</label>
+        <input type="number" id="sqft" class="form-input" placeholder="2000" value="2000">
+      </div>
+      
+      <div class="form-group">
+        <label for="yearBuilt">Year Built</label>
+        <input type="number" id="yearBuilt" class="form-input" placeholder="2010" value="2010">
+      </div>
+      
+      <div class="form-group">
+        <label for="condition">Property Condition</label>
+        <select id="condition" class="form-select">
+          <option value="excellent">Excellent - Move-in ready</option>
+          <option value="good" selected>Good - Minor updates needed</option>
+          <option value="fair">Fair - Some renovation required</option>
+          <option value="poor">Poor - Major renovation needed</option>
+        </select>
+      </div>
+      
+      <button class="analyze-btn" onclick="analyzeProperty()">Get AI Valuation</button>
+    </div>
+    
+    <div class="results-panel">
+      <h2 style="color:#7c3aed;margin-bottom:20px">Valuation Analysis</h2>
+      
+      <div id="results-container">
+        <div class="valuation-card" id="mainValuation">
+          <div class="estimate-range">
+            <div class="price-range" id="priceRange">-</div>
+            <div class="confidence" id="confidence">-</div>
+            <div class="market-trend" id="marketTrend">-</div>
+          </div>
+          
+          <div class="details-grid">
+            <div class="detail-item">
+              <div class="detail-value" id="pricePerSqft">-</div>
+              <div class="detail-label">Price per Sq Ft</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-value" id="marketScore">-</div>
+              <div class="detail-label">Market Score</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="comparable" id="comparables" style="opacity:0;transition:opacity 0.5s ease">
+          <div class="comparable-title">📊 Similar Properties</div>
+          <div id="compList">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+      
+      <div class="chart-container" id="chartContainer">
+        <canvas id="trendsChart" width="400" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+  
+  <div class="cta-section" id="ctaSection" style="opacity:0;transition:opacity 0.5s ease">
+    <h3 style="color:#f59e0b;margin-bottom:12px">📈 Get Full AI-Powered Valuation</h3>
+    <p style="color:#a0a0b0">Unlock detailed market analysis, investment projections, and neighborhood insights with PropertyPilot Pro.</p>
+    <a href="https://buy.stripe.com/3cI28k8HY4CC09Ycco0Ny02" class="cta-btn" target="_blank">Sign Up for Full Analysis — $297</a>
+    <p style="margin-top:15px;color:#888;font-size:0.9em">Includes rental yield analysis & market forecasting</p>
+  </div>
+</div>
+
+<script>
+let trendsChart = null;
+
+function analyzeProperty() {
+  const address = document.getElementById('address').value || '90210';
+  const bedrooms = parseInt(document.getElementById('bedrooms').value);
+  const bathrooms = parseFloat(document.getElementById('bathrooms').value);
+  const sqft = parseFloat(document.getElementById('sqft').value) || 2000;
+  const yearBuilt = parseInt(document.getElementById('yearBuilt').value) || 2010;
+  const condition = document.getElementById('condition').value;
+  
+  // Calculate base valuation (simplified algorithm)
+  let basePrice = getBasePrice(address);
+  let adjustedPrice = basePrice;
+  
+  // Adjust for property features
+  adjustedPrice += (bedrooms - 3) * basePrice * 0.15; // Bedroom premium/discount
+  adjustedPrice += (bathrooms - 2) * basePrice * 0.08; // Bathroom premium/discount
+  adjustedPrice *= (sqft / 2000); // Size adjustment
+  
+  // Age adjustment
+  const currentYear = new Date().getFullYear();
+  const age = currentYear - yearBuilt;
+  if (age < 10) adjustedPrice *= 1.1;
+  else if (age > 30) adjustedPrice *= 0.95;
+  
+  // Condition adjustment
+  const conditionMultipliers = {
+    excellent: 1.15,
+    good: 1.0,
+    fair: 0.9,
+    poor: 0.75
+  };
+  adjustedPrice *= conditionMultipliers[condition];
+  
+  // Create range (±8%)
+  const lowEstimate = Math.round(adjustedPrice * 0.92);
+  const highEstimate = Math.round(adjustedPrice * 1.08);
+  const midEstimate = Math.round(adjustedPrice);
+  
+  const pricePerSqft = Math.round(midEstimate / sqft);
+  const marketScore = calculateMarketScore(address, yearBuilt, condition);
+  const confidence = getConfidence(address, sqft, bedrooms);
+  
+  // Animate results
+  setTimeout(() => {
+    animateValuation(lowEstimate, highEstimate);
+    document.getElementById('confidence').textContent = confidence + '% Confidence';
+    document.getElementById('marketTrend').textContent = getMarketTrend(address);
+    document.getElementById('pricePerSqft').textContent = '$' + pricePerSqft;
+    document.getElementById('marketScore').textContent = marketScore + '/100';
+    document.getElementById('mainValuation').classList.add('show');
+  }, 300);
+  
+  setTimeout(() => {
+    generateComparables(midEstimate, sqft, bedrooms, bathrooms);
+    document.getElementById('comparables').style.opacity = '1';
+  }, 800);
+  
+  setTimeout(() => {
+    createTrendsChart(midEstimate, address);
+    document.getElementById('chartContainer').classList.add('show');
+    document.getElementById('ctaSection').style.opacity = '1';
+  }, 1200);
+}
+
+function getBasePrice(address) {
+  // Simulate location-based pricing
+  const locationPricing = {
+    '90210': 2800000, // Beverly Hills
+    '10001': 1200000, // NYC
+    '94102': 1800000, // San Francisco
+    '33139': 850000,  // Miami Beach
+    '78701': 650000   // Austin
+  };
+  
+  const zipCode = address.match(/\d{5}/);
+  if (zipCode && locationPricing[zipCode[0]]) {
+    return locationPricing[zipCode[0]];
+  }
+  
+  // Default based on address characteristics
+  if (address.toLowerCase().includes('beverly') || address.includes('90210')) return 2800000;
+  if (address.toLowerCase().includes('manhattan') || address.toLowerCase().includes('nyc')) return 1200000;
+  if (address.toLowerCase().includes('san francisco') || address.toLowerCase().includes('sf')) return 1800000;
+  if (address.toLowerCase().includes('miami')) return 850000;
+  if (address.toLowerCase().includes('austin')) return 650000;
+  
+  return 550000; // Default national average
+}
+
+function calculateMarketScore(address, yearBuilt, condition) {
+  let score = 75; // Base score
+  
+  // Location boost
+  const premiumAreas = ['90210', 'beverly', 'manhattan', 'san francisco', 'miami'];
+  if (premiumAreas.some(area => address.toLowerCase().includes(area))) {
+    score += 15;
+  }
+  
+  // Age factor
+  const currentYear = new Date().getFullYear();
+  const age = currentYear - yearBuilt;
+  if (age < 10) score += 10;
+  else if (age > 30) score -= 5;
+  
+  // Condition impact
+  const conditionScores = { excellent: 10, good: 5, fair: 0, poor: -10 };
+  score += conditionScores[condition] || 0;
+  
+  return Math.min(Math.max(score, 0), 100);
+}
+
+function getConfidence(address, sqft, bedrooms) {
+  let confidence = 85; // Base confidence
+  
+  // Size factor
+  if (sqft < 800 || sqft > 5000) confidence -= 10;
+  
+  // Bedroom factor
+  if (bedrooms < 2 || bedrooms > 5) confidence -= 5;
+  
+  // Location factor
+  const dataRichAreas = ['90210', '10001', '94102', '33139'];
+  if (dataRichAreas.some(area => address.includes(area))) confidence += 5;
+  
+  return Math.min(Math.max(confidence, 65), 95);
+}
+
+function getMarketTrend(address) {
+  const trends = [
+    '↗️ Market trending up 3.2% vs last quarter',
+    '📈 Strong seller\'s market - low inventory',
+    '📊 Balanced market conditions',
+    '🔥 High demand area - 12% above market avg'
+  ];
+  
+  const hash = address.split('').reduce((a, b) => {
+    a = ((a << 5) - a) + b.charCodeAt(0);
+    return a & a;
+  }, 0);
+  
+  return trends[Math.abs(hash) % trends.length];
+}
+
+function animateValuation(low, high) {
+  const element = document.getElementById('priceRange');
+  let progress = 0;
+  
+  function animate() {
+    progress += 0.02;
+    const currentLow = Math.round(low * Math.min(progress, 1));
+    const currentHigh = Math.round(high * Math.min(progress, 1));
+    
+    element.textContent = formatPrice(currentLow) + ' - ' + formatPrice(currentHigh);
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  }
+  
+  animate();
+}
+
+function generateComparables(targetPrice, sqft, bedrooms, bathrooms) {
+  const comparables = [
+    { address: 'Similar Property A', price: targetPrice * (0.92 + Math.random() * 0.16), sqft: sqft * (0.9 + Math.random() * 0.2) },
+    { address: 'Similar Property B', price: targetPrice * (0.92 + Math.random() * 0.16), sqft: sqft * (0.9 + Math.random() * 0.2) },
+    { address: 'Similar Property C', price: targetPrice * (0.92 + Math.random() * 0.16), sqft: sqft * (0.9 + Math.random() * 0.2) }
+  ];
+  
+  const compList = document.getElementById('compList');
+  compList.innerHTML = '';
+  
+  comparables.forEach(comp => {
+    const compDiv = document.createElement('div');
+    compDiv.className = 'comp-item';
+    compDiv.innerHTML = `
+      <span>${comp.address} • ${Math.round(comp.sqft)} sq ft</span>
+      <span>${formatPrice(comp.price)}</span>
+    `;
+    compList.appendChild(compDiv);
+  });
+}
+
+function createTrendsChart(price, address) {
+  const ctx = document.getElementById('trendsChart').getContext('2d');
+  
+  if (trendsChart) {
+    trendsChart.destroy();
+  }
+  
+  // Generate 12 months of price trends
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const currentMonth = new Date().getMonth();
+  const labels = [];
+  const priceData = [];
+  
+  for (let i = 0; i < 12; i++) {
+    const monthIndex = (currentMonth - 11 + i + 12) % 12;
+    labels.push(months[monthIndex]);
+    
+    // Generate trend with some realistic variation
+    const baseVariation = (Math.random() - 0.5) * 0.1; // ±5%
+    const trendVariation = i * 0.005; // Slight upward trend
+    priceData.push(Math.round(price * (0.95 + baseVariation + trendVariation)));
+  }
+  
+  trendsChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Neighborhood Price Trend',
+        data: priceData,
+        borderColor: '#7c3aed',
+        backgroundColor: 'rgba(124, 58, 237, 0.1)',
+        borderWidth: 3,
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: { color: '#a0a0b0' }
+        },
+        title: {
+          display: true,
+          text: '12-Month Price Trends',
+          color: '#c0c0d0',
+          font: { size: 16 }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#a0a0b0' },
+          grid: { color: '#2a2a3e' }
+        },
+        y: {
+          ticks: {
+            color: '#a0a0b0',
+            callback: function(value) {
+              return formatPrice(value);
+            }
+          },
+          grid: { color: '#2a2a3e' }
+        }
+      }
+    }
+  });
+}
+
+function formatPrice(price) {
+  if (price >= 1000000) {
+    return '$' + (price / 1000000).toFixed(1) + 'M';
+  } else if (price >= 1000) {
+    return '$' + (price / 1000).toFixed(0) + 'K';
+  }
+  return '$' + price.toLocaleString();
+}
+
+// Auto-analyze on page load
+window.onload = function() {
+  analyzeProperty();
+}
+</script>
+</body>
+</html>

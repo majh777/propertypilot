@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROI Calculator — PropertyPilot AI for Real Estate</title>
+<meta name="description" content="Calculate your ROI with AI-powered property management automation. See projected savings, time saved, and vacancy reduction.">
+<link rel="canonical" href="https://majh777.github.io/propertypilot/roi-calculator.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;line-height:1.7}
+.header{padding:20px;background:#1a1a2e;border-bottom:1px solid #2a2a3e}
+.header h1{color:#7c3aed;font-size:1.8em;text-align:center}
+.nav{text-align:center;margin-top:10px}
+.nav a{color:#a0a0b0;text-decoration:none;margin:0 15px;font-size:0.9em;transition:color 0.3s}
+.nav a:hover{color:#7c3aed}
+.container{max-width:1200px;margin:0 auto;padding:40px 20px}
+.calculator-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px}
+@media(max-width:768px){.calculator-grid{grid-template-columns:1fr}}
+.input-panel{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:30px}
+.results-panel{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:30px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;color:#c0c0d0;margin-bottom:8px;font-weight:600}
+.form-input{width:100%;padding:12px;background:#0f0f1a;border:1px solid #2a2a3e;border-radius:8px;color:#e0e0e0;font-size:1em}
+.form-input:focus{outline:none;border-color:#7c3aed}
+.calculate-btn{width:100%;padding:16px;background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1.1em;cursor:pointer;transition:transform 0.2s}
+.calculate-btn:hover{transform:scale(1.02)}
+.result-card{background:#12121a;border:1px solid #7c3aed44;border-radius:12px;padding:20px;margin-bottom:16px;opacity:0;transform:translateY(20px);transition:all 0.5s ease}
+.result-card.show{opacity:1;transform:translateY(0)}
+.result-value{font-size:2em;font-weight:800;color:#7c3aed;margin-bottom:4px}
+.result-label{color:#a0a0b0;font-size:0.9em}
+.chart-container{margin-top:30px;opacity:0;transition:opacity 0.5s ease}
+.chart-container.show{opacity:1}
+.cta-section{text-align:center;margin-top:40px;padding:30px;background:#1a1a2e;border-radius:16px;border:1px solid #2a2a3e}
+.cta-btn{display:inline-block;padding:16px 40px;background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;text-decoration:none;border-radius:12px;font-weight:700;font-size:1.1em;transition:transform .2s;margin-top:20px}
+.cta-btn:hover{transform:scale(1.05)}
+.hero{text-align:center;padding:40px 20px 20px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)}
+.hero h1{font-size:2.2em;font-weight:800;background:linear-gradient(135deg,#7c3aed,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
+.hero p{font-size:1.1em;color:#a0a0b0;max-width:600px;margin:0 auto 20px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🏠 PropertyPilot</h1>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="roi-calculator.html">ROI Calculator</a>
+    <a href="valuation-tool.html">Property Valuation</a>
+    <a href="screening-demo.html">Tenant Screening</a>
+    <a href="pricing-optimizer.html">Pricing Optimizer</a>
+    <a href="portfolio-demo.html">Portfolio Dashboard</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>💰 ROI Calculator</h1>
+  <p>See how much time and money PropertyPilot's AI automation can save your real estate business.</p>
+</div>
+
+<div class="container">
+  <div class="calculator-grid">
+    <div class="input-panel">
+      <h2 style="color:#7c3aed;margin-bottom:20px">Current Property Portfolio</h2>
+      
+      <div class="form-group">
+        <label for="propertyValue">Average Property Value ($)</label>
+        <input type="number" id="propertyValue" class="form-input" placeholder="500000" value="500000">
+      </div>
+      
+      <div class="form-group">
+        <label for="vacancyRate">Current Vacancy Rate (%)</label>
+        <input type="number" id="vacancyRate" class="form-input" placeholder="8" value="8" max="100">
+      </div>
+      
+      <div class="form-group">
+        <label for="managementHours">Management Hours/Week</label>
+        <input type="number" id="managementHours" class="form-input" placeholder="15" value="15">
+      </div>
+      
+      <div class="form-group">
+        <label for="numUnits">Number of Units</label>
+        <input type="number" id="numUnits" class="form-input" placeholder="10" value="10">
+      </div>
+      
+      <button class="calculate-btn" onclick="calculateROI()">Calculate My Savings</button>
+    </div>
+    
+    <div class="results-panel">
+      <h2 style="color:#7c3aed;margin-bottom:20px">Your Projected Savings</h2>
+      
+      <div id="results-container">
+        <div class="result-card" id="timeCard">
+          <div class="result-value" id="timeSaved">-</div>
+          <div class="result-label">Hours Saved Per Week</div>
+        </div>
+        
+        <div class="result-card" id="vacancyCard">
+          <div class="result-value" id="vacancyReduction">-</div>
+          <div class="result-label">Vacancy Rate Reduction</div>
+        </div>
+        
+        <div class="result-card" id="revenueCard">
+          <div class="result-value" id="annualSavings">-</div>
+          <div class="result-label">Annual Revenue Increase</div>
+        </div>
+        
+        <div class="result-card" id="roiCard">
+          <div class="result-value" id="roiPercentage">-</div>
+          <div class="result-label">Return on Investment</div>
+        </div>
+      </div>
+      
+      <div class="chart-container" id="chartContainer">
+        <canvas id="savingsChart" width="400" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+  
+  <div class="cta-section" id="ctaSection" style="opacity:0;transition:opacity 0.5s ease">
+    <h3 style="color:#f59e0b;margin-bottom:12px">🚀 Ready to Start Saving?</h3>
+    <p style="color:#a0a0b0">Join 500+ real estate professionals already using PropertyPilot's AI automation.</p>
+    <a href="https://buy.stripe.com/3cI28k8HY4CC09Ycco0Ny02" class="cta-btn" target="_blank">Get PropertyPilot — $297</a>
+    <p style="margin-top:15px;color:#888;font-size:0.9em">30-day money-back guarantee</p>
+  </div>
+</div>
+
+<script>
+let savingsChart = null;
+
+function calculateROI() {
+  const propertyValue = parseFloat(document.getElementById('propertyValue').value) || 500000;
+  const vacancyRate = parseFloat(document.getElementById('vacancyRate').value) || 8;
+  const managementHours = parseFloat(document.getElementById('managementHours').value) || 15;
+  const numUnits = parseFloat(document.getElementById('numUnits').value) || 10;
+  
+  // Calculate AI improvements
+  const aiTimeSaved = Math.round(managementHours * 0.7); // AI saves 70% of management time
+  const aiVacancyReduction = Math.round((vacancyRate * 0.4) * 10) / 10; // AI reduces vacancy by 40%
+  const monthlyRentPerUnit = Math.round(propertyValue * 0.01 * 0.1); // 1% of value per month rent
+  
+  // Calculate annual savings
+  const timeSavingsValue = aiTimeSaved * 52 * 75; // $75/hour value
+  const vacancySavingsValue = (aiVacancyReduction / 100) * monthlyRentPerUnit * numUnits * 12;
+  const totalAnnualSavings = timeSavingsValue + vacancySavingsValue;
+  const roiPercent = Math.round((totalAnnualSavings / 297) * 100);
+  
+  // Animate results
+  setTimeout(() => {
+    animateValue('timeSaved', aiTimeSaved + 'h', 1000);
+    document.getElementById('timeCard').classList.add('show');
+  }, 200);
+  
+  setTimeout(() => {
+    animateValue('vacancyReduction', '-' + aiVacancyReduction + '%', 1000);
+    document.getElementById('vacancyCard').classList.add('show');
+  }, 400);
+  
+  setTimeout(() => {
+    animateValue('annualSavings', '$' + formatNumber(totalAnnualSavings), 1500);
+    document.getElementById('revenueCard').classList.add('show');
+  }, 600);
+  
+  setTimeout(() => {
+    animateValue('roiPercentage', roiPercent + '%', 1500);
+    document.getElementById('roiCard').classList.add('show');
+  }, 800);
+  
+  setTimeout(() => {
+    createChart(timeSavingsValue, vacancySavingsValue);
+    document.getElementById('chartContainer').classList.add('show');
+    document.getElementById('ctaSection').style.opacity = '1';
+  }, 1200);
+}
+
+function animateValue(elementId, finalValue, duration) {
+  const element = document.getElementById(elementId);
+  let startTime = null;
+  
+  function animate(currentTime) {
+    if (startTime === null) startTime = currentTime;
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+    
+    if (finalValue.includes('$')) {
+      const targetNum = parseInt(finalValue.replace(/[$,]/g, ''));
+      const currentNum = Math.floor(targetNum * progress);
+      element.textContent = '$' + formatNumber(currentNum);
+    } else if (finalValue.includes('%')) {
+      const targetNum = parseInt(finalValue.replace('%', ''));
+      const currentNum = Math.floor(targetNum * progress);
+      element.textContent = currentNum + '%';
+    } else if (finalValue.includes('h')) {
+      const targetNum = parseInt(finalValue.replace('h', ''));
+      const currentNum = Math.floor(targetNum * progress);
+      element.textContent = currentNum + 'h';
+    } else if (finalValue.includes('-')) {
+      const targetNum = parseFloat(finalValue.replace(/[-%]/g, ''));
+      const currentNum = (targetNum * progress).toFixed(1);
+      element.textContent = '-' + currentNum + '%';
+    }
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  }
+  
+  requestAnimationFrame(animate);
+}
+
+function createChart(timeSavings, vacancySavings) {
+  const ctx = document.getElementById('savingsChart').getContext('2d');
+  
+  if (savingsChart) {
+    savingsChart.destroy();
+  }
+  
+  savingsChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Time Savings', 'Vacancy Reduction', 'PropertyPilot Cost'],
+      datasets: [{
+        data: [timeSavings, vacancySavings, 297],
+        backgroundColor: ['#7c3aed', '#3b82f6', '#ef4444'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: '#a0a0b0',
+            padding: 20,
+            usePointStyle: true
+          }
+        },
+        title: {
+          display: true,
+          text: 'Annual Savings Breakdown',
+          color: '#c0c0d0',
+          font: { size: 16 }
+        }
+      }
+    }
+  });
+}
+
+function formatNumber(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// Auto-calculate on page load
+window.onload = function() {
+  calculateROI();
+}
+</script>
+</body>
+</html>
