@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rental Pricing Optimizer — PropertyPilot AI</title>
+<meta name="description" content="Optimize rental pricing with AI. Find the perfect balance between rent price and occupancy for maximum revenue.">
+<link rel="canonical" href="https://majh777.github.io/propertypilot/pricing-optimizer.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;line-height:1.7}
+.header{padding:20px;background:#1a1a2e;border-bottom:1px solid #2a2a3e}
+.header h1{color:#7c3aed;font-size:1.8em;text-align:center}
+.nav{text-align:center;margin-top:10px}
+.nav a{color:#a0a0b0;text-decoration:none;margin:0 15px;font-size:0.9em;transition:color 0.3s}
+.nav a:hover{color:#7c3aed}
+.container{max-width:1200px;margin:0 auto;padding:40px 20px}
+.optimizer-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px}
+@media(max-width:768px){.optimizer-grid{grid-template-columns:1fr}}
+.input-panel{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:30px}
+.results-panel{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:30px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;color:#c0c0d0;margin-bottom:8px;font-weight:600}
+.form-input{width:100%;padding:12px;background:#0f0f1a;border:1px solid #2a2a3e;border-radius:8px;color:#e0e0e0;font-size:1em}
+.form-input:focus{outline:none;border-color:#7c3aed}
+.form-select{width:100%;padding:12px;background:#0f0f1a;border:1px solid #2a2a3e;border-radius:8px;color:#e0e0e0;font-size:1em}
+.form-select:focus{outline:none;border-color:#7c3aed}
+.optimize-btn{width:100%;padding:16px;background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1.1em;cursor:pointer;transition:transform 0.2s}
+.optimize-btn:hover{transform:scale(1.02)}
+.optimal-price{text-align:center;margin-bottom:30px;opacity:0;transform:translateY(20px);transition:all 0.8s ease}
+.optimal-price.show{opacity:1;transform:translateY(0)}
+.price-display{font-size:3em;font-weight:800;color:#10b981;margin-bottom:8px}
+.price-subtitle{color:#a0a0b0;font-size:1em;margin-bottom:20px}
+.metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:30px}
+.metric-card{background:#12121a;border:1px solid #7c3aed44;border-radius:12px;padding:15px;text-align:center;opacity:0;transform:translateY(20px);transition:all 0.5s ease}
+.metric-card.show{opacity:1;transform:translateY(0)}
+.metric-value{font-size:1.8em;font-weight:700;color:#7c3aed;margin-bottom:4px}
+.metric-label{color:#a0a0b0;font-size:0.85em}
+.chart-container{margin-top:20px;opacity:0;transition:opacity 0.5s ease}
+.chart-container.show{opacity:1}
+.chart-tabs{display:flex;margin-bottom:20px;border-bottom:1px solid #2a2a3e}
+.chart-tab{flex:1;padding:12px;background:none;border:none;color:#a0a0b0;cursor:pointer;transition:color 0.3s, border-color 0.3s;border-bottom:2px solid transparent}
+.chart-tab.active{color:#7c3aed;border-color:#7c3aed}
+.chart-tab:hover{color:#c0c0d0}
+.cta-section{text-align:center;margin-top:40px;padding:30px;background:#1a1a2e;border-radius:16px;border:1px solid #2a2a3e}
+.cta-btn{display:inline-block;padding:16px 40px;background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;text-decoration:none;border-radius:12px;font-weight:700;font-size:1.1em;transition:transform .2s;margin-top:20px}
+.cta-btn:hover{transform:scale(1.05)}
+.hero{text-align:center;padding:40px 20px 20px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)}
+.hero h1{font-size:2.2em;font-weight:800;background:linear-gradient(135deg,#7c3aed,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
+.hero p{font-size:1.1em;color:#a0a0b0;max-width:600px;margin:0 auto 20px}
+.price-range-slider{margin:20px 0}
+.price-range-slider input{width:100%;height:8px;background:#2a2a3e;border-radius:5px;outline:none;opacity:0.7;transition:opacity 0.2s}
+.price-range-slider input:hover{opacity:1}
+.price-range-slider input::-webkit-slider-thumb{appearance:none;width:20px;height:20px;background:#7c3aed;border-radius:50%;cursor:pointer}
+.price-range-values{display:flex;justify-content:space-between;color:#a0a0b0;font-size:0.9em;margin-top:8px}
+.recommendation-box{background:#0f0f1a;border:1px solid #10b98144;border-radius:12px;padding:20px;margin-top:20px}
+.recommendation-title{color:#10b981;font-weight:700;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🏠 PropertyPilot</h1>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="roi-calculator.html">ROI Calculator</a>
+    <a href="valuation-tool.html">Property Valuation</a>
+    <a href="screening-demo.html">Tenant Screening</a>
+    <a href="pricing-optimizer.html">Pricing Optimizer</a>
+    <a href="portfolio-demo.html">Portfolio Dashboard</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>📊 Rental Pricing Optimizer</h1>
+  <p>Find the optimal rent price that maximizes your revenue while maintaining high occupancy rates.</p>
+</div>
+
+<div class="container">
+  <div class="optimizer-grid">
+    <div class="input-panel">
+      <h2 style="color:#7c3aed;margin-bottom:20px">Property Information</h2>
+      
+      <div class="form-group">
+        <label for="propertyType">Property Type</label>
+        <select id="propertyType" class="form-select">
+          <option value="apartment">Apartment</option>
+          <option value="house" selected>Single Family House</option>
+          <option value="townhouse">Townhouse</option>
+          <option value="condo">Condo</option>
+          <option value="studio">Studio</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="location">Location</label>
+        <select id="location" class="form-select">
+          <option value="urban" selected>Urban Core</option>
+          <option value="suburban">Suburban</option>
+          <option value="downtown">Downtown</option>
+          <option value="rural">Rural</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="bedrooms">Bedrooms</label>
+        <select id="bedrooms" class="form-select">
+          <option value="0">Studio</option>
+          <option value="1">1 bedroom</option>
+          <option value="2">2 bedrooms</option>
+          <option value="3" selected>3 bedrooms</option>
+          <option value="4">4 bedrooms</option>
+          <option value="5">5+ bedrooms</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="currentRent">Current Monthly Rent ($)</label>
+        <input type="number" id="currentRent" class="form-input" placeholder="2400" value="2400">
+      </div>
+      
+      <div class="form-group">
+        <label for="targetOccupancy">Target Occupancy Rate (%)</label>
+        <input type="number" id="targetOccupancy" class="form-input" placeholder="95" value="95" min="80" max="100">
+      </div>
+      
+      <div class="form-group">
+        <label>Price Range to Analyze</label>
+        <div class="price-range-slider">
+          <input type="range" id="priceRange" min="1500" max="3500" value="2400" oninput="updatePriceRange()">
+          <div class="price-range-values">
+            <span>$1,500</span>
+            <span id="currentPriceDisplay">$2,400</span>
+            <span>$3,500</span>
+          </div>
+        </div>
+      </div>
+      
+      <button class="optimize-btn" onclick="optimizePricing()">Find Optimal Price</button>
+    </div>
+    
+    <div class="results-panel">
+      <h2 style="color:#7c3aed;margin-bottom:20px">Optimization Results</h2>
+      
+      <div class="optimal-price" id="optimalPrice">
+        <div class="price-display" id="optimalPriceValue">-</div>
+        <div class="price-subtitle" id="optimalPriceSubtitle">Optimal Monthly Rent</div>
+        
+        <div class="metrics-grid">
+          <div class="metric-card" id="occupancyCard">
+            <div class="metric-value" id="predictedOccupancy">-</div>
+            <div class="metric-label">Predicted Occupancy</div>
+          </div>
+          <div class="metric-card" id="revenueCard">
+            <div class="metric-value" id="monthlyRevenue">-</div>
+            <div class="metric-label">Monthly Revenue</div>
+          </div>
+          <div class="metric-card" id="annualCard">
+            <div class="metric-value" id="annualRevenue">-</div>
+            <div class="metric-label">Annual Revenue</div>
+          </div>
+          <div class="metric-card" id="increaseCard">
+            <div class="metric-value" id="revenueIncrease">-</div>
+            <div class="metric-label">Revenue Increase</div>
+          </div>
+        </div>
+        
+        <div class="recommendation-box" id="recommendationBox">
+          <div class="recommendation-title">💡 AI Recommendation</div>
+          <div id="recommendationText">-</div>
+        </div>
+      </div>
+      
+      <div class="chart-container" id="chartContainer">
+        <div class="chart-tabs">
+          <button class="chart-tab active" onclick="showChart('occupancy')">Price vs Occupancy</button>
+          <button class="chart-tab" onclick="showChart('revenue')">Revenue Curve</button>
+        </div>
+        <canvas id="optimizationChart" width="400" height="300"></canvas>
+      </div>
+    </div>
+  </div>
+  
+  <div class="cta-section" id="ctaSection" style="opacity:0;transition:opacity 0.5s ease">
+    <h3 style="color:#f59e0b;margin-bottom:12px">📈 Maximize Your Rental Revenue</h3>
+    <p style="color:#a0a0b0">Get advanced pricing intelligence and automated rent optimization with PropertyPilot Pro.</p>
+    <a href="https://buy.stripe.com/3cI28k8HY4CC09Ycco0Ny02" class="cta-btn" target="_blank">Get Advanced Pricing Tools — $297</a>
+    <p style="margin-top:15px;color:#888;font-size:0.9em">Includes market tracking & automated price adjustments</p>
+  </div>
+</div>
+
+<script>
+let currentChart = null;
+let chartType = 'occupancy';
+let optimizationData = {};
+
+function updatePriceRange() {
+  const value = document.getElementById('priceRange').value;
+  document.getElementById('currentPriceDisplay').textContent = '$' + parseInt(value).toLocaleString();
+}
+
+function optimizePricing() {
+  const propertyType = document.getElementById('propertyType').value;
+  const location = document.getElementById('location').value;
+  const bedrooms = parseInt(document.getElementById('bedrooms').value);
+  const currentRent = parseFloat(document.getElementById('currentRent').value) || 2400;
+  const targetOccupancy = parseFloat(document.getElementById('targetOccupancy').value) || 95;
+  
+  // Calculate market data
+  optimizationData = calculateOptimalPricing(propertyType, location, bedrooms, currentRent, targetOccupancy);
+  
+  // Animate results
+  setTimeout(() => {
+    displayOptimalPrice();
+    document.getElementById('optimalPrice').classList.add('show');
+  }, 300);
+  
+  setTimeout(() => {
+    showMetrics();
+  }, 800);
+  
+  setTimeout(() => {
+    showChart(chartType);
+    document.getElementById('chartContainer').classList.add('show');
+    document.getElementById('ctaSection').style.opacity = '1';
+  }, 1200);
+}
+
+function calculateOptimalPricing(propertyType, location, bedrooms, currentRent, targetOccupancy) {
+  // Base market multipliers
+  const locationMultipliers = {
+    urban: 1.2,
+    suburban: 1.0,
+    downtown: 1.4,
+    rural: 0.8
+  };
+  
+  const propertyMultipliers = {
+    apartment: 1.0,
+    house: 1.15,
+    townhouse: 1.1,
+    condo: 1.05,
+    studio: 0.85
+  };
+  
+  const baseMarketRent = currentRent * locationMultipliers[location] * propertyMultipliers[propertyType];
+  
+  // Calculate price points and occupancy curve
+  const pricePoints = [];
+  const occupancyPoints = [];
+  const revenuePoints = [];
+  
+  for (let price = baseMarketRent * 0.7; price <= baseMarketRent * 1.4; price += 50) {
+    // Occupancy curve based on price elasticity
+    const priceRatio = price / baseMarketRent;
+    let occupancy = 100 - (priceRatio - 1) * 45; // Price sensitivity
+    
+    // Adjust for bedroom count (more bedrooms = less price sensitive)
+    occupancy += (bedrooms - 2) * 3;
+    
+    // Market-specific adjustments
+    if (location === 'downtown') occupancy -= 5; // High demand, less price sensitive
+    if (location === 'rural') occupancy += 10; // Lower demand, more price sensitive
+    
+    occupancy = Math.max(Math.min(occupancy, 100), 60); // Cap between 60-100%
+    
+    const revenue = price * (occupancy / 100);
+    
+    pricePoints.push(Math.round(price));
+    occupancyPoints.push(Math.round(occupancy * 10) / 10);
+    revenuePoints.push(Math.round(revenue));
+  }
+  
+  // Find optimal price (max revenue)
+  let maxRevenue = 0;
+  let optimalIndex = 0;
+  
+  for (let i = 0; i < revenuePoints.length; i++) {
+    if (revenuePoints[i] > maxRevenue) {
+      maxRevenue = revenuePoints[i];
+      optimalIndex = i;
+    }
+  }
+  
+  return {
+    pricePoints,
+    occupancyPoints,
+    revenuePoints,
+    optimalPrice: pricePoints[optimalIndex],
+    optimalOccupancy: occupancyPoints[optimalIndex],
+    maxRevenue,
+    currentRevenue: currentRent * (targetOccupancy / 100)
+  };
+}
+
+function displayOptimalPrice() {
+  const optimalPriceElement = document.getElementById('optimalPriceValue');
+  animateValue(optimalPriceElement, '$' + optimizationData.optimalPrice.toLocaleString(), 1500);
+}
+
+function showMetrics() {
+  const cards = ['occupancyCard', 'revenueCard', 'annualCard', 'increaseCard'];
+  const values = [
+    optimizationData.optimalOccupancy + '%',
+    '$' + optimizationData.maxRevenue.toLocaleString(),
+    '$' + (optimizationData.maxRevenue * 12).toLocaleString(),
+    '+' + Math.round(((optimizationData.maxRevenue - optimizationData.currentRevenue) / optimizationData.currentRevenue) * 100) + '%'
+  ];
+  
+  cards.forEach((cardId, index) => {
+    setTimeout(() => {
+      const valueElement = document.getElementById(cardId).querySelector('.metric-value');
+      animateValue(valueElement, values[index], 1000);
+      document.getElementById(cardId).classList.add('show');
+    }, index * 200);
+  });
+  
+  // Show recommendation
+  setTimeout(() => {
+    const increase = Math.round(((optimizationData.maxRevenue - optimizationData.currentRevenue) / optimizationData.currentRevenue) * 100);
+    const recommendationText = document.getElementById('recommendationText');
+    
+    if (increase > 10) {
+      recommendationText.textContent = `Increase rent by ${increase}% to maximize revenue. Market can support higher pricing with minimal occupancy impact.`;
+    } else if (increase < -5) {
+      recommendationText.textContent = `Consider reducing rent to improve occupancy. Current pricing may be above market tolerance.`;
+    } else {
+      recommendationText.textContent = `Current pricing is near optimal. Small adjustments could yield ${increase}% revenue improvement.`;
+    }
+  }, 1000);
+}
+
+function showChart(type) {
+  chartType = type;
+  
+  // Update tab appearance
+  document.querySelectorAll('.chart-tab').forEach(tab => tab.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  const ctx = document.getElementById('optimizationChart').getContext('2d');
+  
+  if (currentChart) {
+    currentChart.destroy();
+  }
+  
+  if (type === 'occupancy') {
+    currentChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: optimizationData.pricePoints.map(price => '$' + (price / 1000).toFixed(1) + 'k'),
+        datasets: [{
+          label: 'Occupancy Rate (%)',
+          data: optimizationData.occupancyPoints,
+          borderColor: '#7c3aed',
+          backgroundColor: 'rgba(124, 58, 237, 0.1)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: optimizationData.pricePoints.map((price, index) => 
+            price === optimizationData.optimalPrice ? '#10b981' : '#7c3aed'),
+          pointRadius: optimizationData.pricePoints.map((price) => 
+            price === optimizationData.optimalPrice ? 8 : 4)
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: '#a0a0b0' } },
+          title: {
+            display: true,
+            text: 'Price vs Occupancy Rate',
+            color: '#c0c0d0',
+            font: { size: 16 }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: '#a0a0b0' },
+            grid: { color: '#2a2a3e' },
+            title: { display: true, text: 'Monthly Rent', color: '#a0a0b0' }
+          },
+          y: {
+            ticks: { 
+              color: '#a0a0b0',
+              callback: function(value) { return value + '%'; }
+            },
+            grid: { color: '#2a2a3e' },
+            title: { display: true, text: 'Occupancy Rate', color: '#a0a0b0' },
+            min: 60,
+            max: 100
+          }
+        }
+      }
+    });
+  } else {
+    currentChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: optimizationData.pricePoints.map(price => '$' + (price / 1000).toFixed(1) + 'k'),
+        datasets: [{
+          label: 'Monthly Revenue ($)',
+          data: optimizationData.revenuePoints,
+          borderColor: '#10b981',
+          backgroundColor: 'rgba(16, 185, 129, 0.1)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: optimizationData.pricePoints.map((price, index) => 
+            optimizationData.revenuePoints[index] === optimizationData.maxRevenue ? '#f59e0b' : '#10b981'),
+          pointRadius: optimizationData.pricePoints.map((price, index) => 
+            optimizationData.revenuePoints[index] === optimizationData.maxRevenue ? 8 : 4)
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: '#a0a0b0' } },
+          title: {
+            display: true,
+            text: 'Revenue Optimization Curve',
+            color: '#c0c0d0',
+            font: { size: 16 }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: '#a0a0b0' },
+            grid: { color: '#2a2a3e' },
+            title: { display: true, text: 'Monthly Rent', color: '#a0a0b0' }
+          },
+          y: {
+            ticks: { 
+              color: '#a0a0b0',
+              callback: function(value) { return '$' + (value / 1000).toFixed(1) + 'k'; }
+            },
+            grid: { color: '#2a2a3e' },
+            title: { display: true, text: 'Monthly Revenue', color: '#a0a0b0' }
+          }
+        }
+      }
+    });
+  }
+}
+
+function animateValue(element, finalValue, duration) {
+  let startTime = null;
+  
+  function animate(currentTime) {
+    if (startTime === null) startTime = currentTime;
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+    
+    if (finalValue.includes('$')) {
+      const targetNum = parseInt(finalValue.replace(/[$,k]/g, '')) * (finalValue.includes('k') ? 1000 : 1);
+      const currentNum = Math.floor(targetNum * progress);
+      if (targetNum >= 1000000) {
+        element.textContent = '$' + (currentNum / 1000000).toFixed(1) + 'M';
+      } else if (targetNum >= 1000) {
+        element.textContent = '$' + (currentNum / 1000).toFixed(0) + 'k';
+      } else {
+        element.textContent = '$' + currentNum.toLocaleString();
+      }
+    } else if (finalValue.includes('%')) {
+      const targetNum = parseFloat(finalValue.replace('%', ''));
+      const currentNum = (targetNum * progress).toFixed(1);
+      element.textContent = currentNum + '%';
+    } else {
+      element.textContent = finalValue;
+    }
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  }
+  
+  requestAnimationFrame(animate);
+}
+
+// Auto-optimize on page load
+window.onload = function() {
+  optimizePricing();
+}
+</script>
+</body>
+</html>

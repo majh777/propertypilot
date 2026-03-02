@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portfolio Dashboard Demo — PropertyPilot AI</title>
+<meta name="description" content="Experience the power of AI-driven property portfolio management. Interactive dashboard demo with real-time insights.">
+<link rel="canonical" href="https://majh777.github.io/propertypilot/portfolio-demo.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;line-height:1.7}
+.header{padding:20px;background:#1a1a2e;border-bottom:1px solid #2a2a3e}
+.header h1{color:#7c3aed;font-size:1.8em;text-align:center}
+.nav{text-align:center;margin-top:10px}
+.nav a{color:#a0a0b0;text-decoration:none;margin:0 15px;font-size:0.9em;transition:color 0.3s}
+.nav a:hover{color:#7c3aed}
+.container{max-width:1400px;margin:0 auto;padding:40px 20px}
+.dashboard-header{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:20px;margin-bottom:40px}
+@media(max-width:1200px){.dashboard-header{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.dashboard-header{grid-template-columns:1fr}}
+.kpi-card{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:24px;text-align:center;transition:transform 0.3s}
+.kpi-card:hover{transform:translateY(-2px)}
+.kpi-value{font-size:2.2em;font-weight:800;color:#7c3aed;margin-bottom:4px}
+.kpi-label{color:#a0a0b0;font-size:0.9em;margin-bottom:8px}
+.kpi-change{font-size:0.8em;font-weight:600}
+.kpi-change.positive{color:#10b981}
+.kpi-change.negative{color:#ef4444}
+.main-content{display:grid;grid-template-columns:2fr 1fr;gap:30px;margin-bottom:40px}
+@media(max-width:1024px){.main-content{grid-template-columns:1fr}}
+.properties-panel{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:30px}
+.insights-panel{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:30px}
+.properties-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
+@media(max-width:600px){.properties-grid{grid-template-columns:1fr}}
+.property-card{background:#12121a;border:1px solid #2a2a3e;border-radius:12px;padding:18px;cursor:pointer;transition:all 0.3s}
+.property-card:hover{border-color:#7c3aed;transform:translateY(-2px)}
+.property-card.selected{border-color:#7c3aed;background:#7c3aed11}
+.property-name{font-weight:700;color:#e0e0e0;margin-bottom:4px;font-size:0.95em}
+.property-address{color:#a0a0b0;font-size:0.8em;margin-bottom:8px}
+.property-metrics{display:flex;justify-content:space-between;font-size:0.85em}
+.property-occupancy{color:#10b981;font-weight:600}
+.property-rent{color:#7c3aed;font-weight:600}
+.property-status{font-size:0.75em;padding:3px 8px;border-radius:12px;margin-top:6px;display:inline-block}
+.status-occupied{background:#10b98122;color:#10b981}
+.status-vacant{background:#ef444422;color:#ef4444}
+.status-maintenance{background:#f59e0b22;color:#f59e0b}
+.alert-item{background:#ef444422;border:1px solid #ef444444;border-radius:8px;padding:12px;margin-bottom:12px}
+.alert-title{color:#ef4444;font-weight:600;font-size:0.9em;margin-bottom:4px}
+.alert-desc{color:#fca5a5;font-size:0.8em}
+.charts-section{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+@media(max-width:1024px){.charts-section{grid-template-columns:1fr}}
+.chart-card{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:30px}
+.chart-title{color:#7c3aed;font-size:1.3em;margin-bottom:20px;text-align:center}
+.property-details{background:#0f0f1a;border:1px solid #7c3aed44;border-radius:12px;padding:20px;margin-top:20px;display:none}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}
+.detail-item{text-align:center}
+.detail-value{font-size:1.3em;font-weight:700;color:#3b82f6;margin-bottom:4px}
+.detail-label{color:#a0a0b0;font-size:0.8em}
+.cta-section{text-align:center;margin-top:50px;padding:40px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);border-radius:16px}
+.cta-btn{display:inline-block;padding:18px 45px;background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;text-decoration:none;border-radius:12px;font-weight:700;font-size:1.2em;transition:transform .2s;margin-top:20px}
+.cta-btn:hover{transform:scale(1.05)}
+.hero{text-align:center;padding:40px 20px 20px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)}
+.hero h1{font-size:2.2em;font-weight:800;background:linear-gradient(135deg,#7c3aed,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
+.hero p{font-size:1.1em;color:#a0a0b0;max-width:600px;margin:0 auto 20px}
+.demo-badge{background:#f59e0b22;border:1px solid #f59e0b44;color:#f59e0b;padding:8px 16px;border-radius:20px;font-size:0.85em;margin-bottom:20px;display:inline-block}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🏠 PropertyPilot</h1>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="roi-calculator.html">ROI Calculator</a>
+    <a href="valuation-tool.html">Property Valuation</a>
+    <a href="screening-demo.html">Tenant Screening</a>
+    <a href="pricing-optimizer.html">Pricing Optimizer</a>
+    <a href="portfolio-demo.html">Portfolio Dashboard</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="demo-badge">🎯 Interactive Demo</div>
+  <h1>📈 Portfolio Dashboard</h1>
+  <p>Experience the power of AI-driven portfolio management. Click any property to explore detailed insights.</p>
+</div>
+
+<div class="container">
+  <div class="dashboard-header">
+    <div class="kpi-card">
+      <div class="kpi-value" id="totalRevenue">$47.2K</div>
+      <div class="kpi-label">Monthly Revenue</div>
+      <div class="kpi-change positive">+8.3% vs last month</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" id="avgOccupancy">94.2%</div>
+      <div class="kpi-label">Average Occupancy</div>
+      <div class="kpi-change positive">+2.1% vs last month</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" id="totalProperties">10</div>
+      <div class="kpi-label">Total Properties</div>
+      <div class="kpi-change positive">+1 new property</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" id="maintenance">$3.2K</div>
+      <div class="kpi-label">Maintenance Costs</div>
+      <div class="kpi-change negative">+12% vs last month</div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="properties-panel">
+      <h2 style="color:#7c3aed;margin-bottom:20px">Property Portfolio</h2>
+      <div class="properties-grid" id="propertiesGrid">
+        <!-- Properties populated by JavaScript -->
+      </div>
+      
+      <div class="property-details" id="propertyDetails">
+        <h3 id="selectedPropertyName">-</h3>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-value" id="propRent">-</div>
+            <div class="detail-label">Monthly Rent</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-value" id="propOccupancy">-</div>
+            <div class="detail-label">Occupancy</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-value" id="propYield">-</div>
+            <div class="detail-label">Annual Yield</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-value" id="propMaintenance">-</div>
+            <div class="detail-label">Maintenance (YTD)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="insights-panel">
+      <h3 style="color:#7c3aed;margin-bottom:20px">🚨 Alerts & Insights</h3>
+      
+      <div class="alert-item">
+        <div class="alert-title">Maintenance Required</div>
+        <div class="alert-desc">Maple Grove Apartments - HVAC system needs servicing (Unit 3B)</div>
+      </div>
+      
+      <div class="alert-item">
+        <div class="alert-title">Lease Expiration</div>
+        <div class="alert-desc">Oak Street Condo - Lease expires in 30 days, tenant renewal pending</div>
+      </div>
+      
+      <div class="alert-item">
+        <div class="alert-title">Market Opportunity</div>
+        <div class="alert-desc">Downtown Loft - Market rent increased 6%, consider rent adjustment</div>
+      </div>
+      
+      <div style="margin-top:30px;padding:20px;background:#0f0f1a;border:1px solid #10b98144;border-radius:12px">
+        <h4 style="color:#10b981;margin-bottom:12px">📊 AI Insights</h4>
+        <div style="color:#a0a0b0;font-size:0.9em;line-height:1.6">
+          • Portfolio performing 15% above market average<br>
+          • Recommend increasing rent at 3 properties<br>
+          • Vacancy risk low across all properties<br>
+          • Maintenance costs trending upward - schedule inspections
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts-section">
+    <div class="chart-card">
+      <div class="chart-title">📈 Monthly Revenue Trends</div>
+      <canvas id="revenueChart" width="400" height="200"></canvas>
+    </div>
+    
+    <div class="chart-card">
+      <div class="chart-title">🏠 Occupancy Overview</div>
+      <canvas id="occupancyChart" width="400" height="200"></canvas>
+    </div>
+    
+    <div class="chart-card">
+      <div class="chart-title">💰 Expense Breakdown</div>
+      <canvas id="expenseChart" width="400" height="200"></canvas>
+    </div>
+    
+    <div class="chart-card">
+      <div class="chart-title">📊 Property Performance</div>
+      <canvas id="performanceChart" width="400" height="200"></canvas>
+    </div>
+  </div>
+  
+  <div class="cta-section">
+    <h2 style="color:#fff;margin-bottom:20px">Ready to Transform Your Portfolio?</h2>
+    <p style="color:#a0a0b0;font-size:1.1em;margin-bottom:20px">This is just a preview. Get the full PropertyPilot experience with real-time data, automated insights, and AI-powered optimization.</p>
+    <a href="https://buy.stripe.com/3cI28k8HY4CC09Ycco0Ny02" class="cta-btn" target="_blank">Get Full Dashboard Access — $297</a>
+    <p style="margin-top:20px;color:#888;font-size:0.9em">30-day money-back guarantee • Cancel anytime • Full data export</p>
+  </div>
+</div>
+
+<script>
+const properties = [
+  {name: "Sunset Apartments", address: "123 Main St", rent: 2400, occupancy: 95, status: "occupied", yield: 8.2, maintenance: 450},
+  {name: "Oak Street Condo", address: "456 Oak Ave", rent: 1800, occupancy: 100, status: "occupied", yield: 7.8, maintenance: 220},
+  {name: "Maple Grove Apartments", address: "789 Maple Dr", rent: 2200, occupancy: 90, status: "maintenance", yield: 7.5, maintenance: 850},
+  {name: "Downtown Loft", address: "321 Urban St", rent: 3200, occupancy: 100, status: "occupied", yield: 9.1, maintenance: 180},
+  {name: "Riverside Duplex", address: "654 River Rd", rent: 2800, occupancy: 85, status: "vacant", yield: 6.9, maintenance: 380},
+  {name: "Garden View Townhouse", address: "987 Garden Ln", rent: 2600, occupancy: 100, status: "occupied", yield: 8.5, maintenance: 290},
+  {name: "Hillside Manor", address: "111 Hill St", rent: 1900, occupancy: 95, status: "occupied", yield: 7.2, maintenance: 340},
+  {name: "Lakefront Cottage", address: "222 Lake Dr", rent: 2100, occupancy: 100, status: "occupied", yield: 8.8, maintenance: 420},
+  {name: "City Center Studio", address: "333 Center Ave", rent: 1400, occupancy: 90, status: "occupied", yield: 6.8, maintenance: 150},
+  {name: "Parkside Residence", address: "444 Park Blvd", rent: 2900, occupancy: 100, status: "occupied", yield: 9.3, maintenance: 380}
+];
+
+let selectedProperty = null;
+
+function initializeDashboard() {
+  renderProperties();
+  createCharts();
+  animateKPIs();
+}
+
+function renderProperties() {
+  const grid = document.getElementById('propertiesGrid');
+  grid.innerHTML = '';
+  
+  properties.forEach((property, index) => {
+    const card = document.createElement('div');
+    card.className = 'property-card';
+    card.onclick = () => selectProperty(index);
+    
+    const statusClass = `status-${property.status}`;
+    const statusText = property.status === 'occupied' ? 'Occupied' : 
+                     property.status === 'vacant' ? 'Vacant' : 'Maintenance';
+    
+    card.innerHTML = `
+      <div class="property-name">${property.name}</div>
+      <div class="property-address">${property.address}</div>
+      <div class="property-metrics">
+        <span class="property-occupancy">${property.occupancy}%</span>
+        <span class="property-rent">$${property.rent.toLocaleString()}/mo</span>
+      </div>
+      <span class="property-status ${statusClass}">${statusText}</span>
+    `;
+    
+    grid.appendChild(card);
+  });
+}
+
+function selectProperty(index) {
+  // Remove previous selection
+  document.querySelectorAll('.property-card').forEach(card => {
+    card.classList.remove('selected');
+  });
+  
+  // Select new property
+  document.querySelectorAll('.property-card')[index].classList.add('selected');
+  selectedProperty = properties[index];
+  
+  // Show details
+  const details = document.getElementById('propertyDetails');
+  details.style.display = 'block';
+  
+  document.getElementById('selectedPropertyName').textContent = selectedProperty.name;
+  document.getElementById('propRent').textContent = '$' + selectedProperty.rent.toLocaleString();
+  document.getElementById('propOccupancy').textContent = selectedProperty.occupancy + '%';
+  document.getElementById('propYield').textContent = selectedProperty.yield + '%';
+  document.getElementById('propMaintenance').textContent = '$' + selectedProperty.maintenance;
+}
+
+function animateKPIs() {
+  const kpis = [
+    {id: 'totalRevenue', target: '47.2K'},
+    {id: 'avgOccupancy', target: '94.2%'},
+    {id: 'totalProperties', target: '10'},
+    {id: 'maintenance', target: '3.2K'}
+  ];
+  
+  kpis.forEach((kpi, index) => {
+    setTimeout(() => {
+      animateValue(document.getElementById(kpi.id), kpi.target, 1000);
+    }, index * 200);
+  });
+}
+
+function animateValue(element, finalValue, duration) {
+  let startTime = null;
+  const startValue = 0;
+  
+  function animate(currentTime) {
+    if (startTime === null) startTime = currentTime;
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+    
+    if (finalValue.includes('K')) {
+      const targetNum = parseFloat(finalValue.replace('K', '')) * 1000;
+      const currentNum = targetNum * progress;
+      element.textContent = '$' + (currentNum / 1000).toFixed(1) + 'K';
+    } else if (finalValue.includes('%')) {
+      const targetNum = parseFloat(finalValue.replace('%', ''));
+      const currentNum = targetNum * progress;
+      element.textContent = currentNum.toFixed(1) + '%';
+    } else {
+      const targetNum = parseInt(finalValue);
+      const currentNum = Math.floor(targetNum * progress);
+      element.textContent = currentNum;
+    }
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  }
+  
+  requestAnimationFrame(animate);
+}
+
+function createCharts() {
+  // Revenue Trends Chart
+  const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+  new Chart(revenueCtx, {
+    type: 'line',
+    data: {
+      labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [{
+        label: 'Monthly Revenue',
+        data: [42800, 43600, 45200, 44800, 46100, 47200],
+        borderColor: '#10b981',
+        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+        borderWidth: 3,
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#a0a0b0' } } },
+      scales: {
+        x: { ticks: { color: '#a0a0b0' }, grid: { color: '#2a2a3e' } },
+        y: { 
+          ticks: { 
+            color: '#a0a0b0',
+            callback: function(value) { return '$' + (value / 1000) + 'K'; }
+          },
+          grid: { color: '#2a2a3e' }
+        }
+      }
+    }
+  });
+  
+  // Occupancy Chart
+  const occupancyCtx = document.getElementById('occupancyChart').getContext('2d');
+  new Chart(occupancyCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Occupied', 'Vacant', 'Maintenance'],
+      datasets: [{
+        data: [85, 10, 5],
+        backgroundColor: ['#10b981', '#ef4444', '#f59e0b'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { color: '#a0a0b0', padding: 20 }
+        }
+      }
+    }
+  });
+  
+  // Expense Chart
+  const expenseCtx = document.getElementById('expenseChart').getContext('2d');
+  new Chart(expenseCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Maintenance', 'Insurance', 'Property Tax', 'Management', 'Utilities'],
+      datasets: [{
+        data: [3200, 1800, 2400, 1500, 900],
+        backgroundColor: ['#7c3aed', '#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#a0a0b0' }, grid: { display: false } },
+        y: { 
+          ticks: { 
+            color: '#a0a0b0',
+            callback: function(value) { return '$' + (value / 1000) + 'K'; }
+          },
+          grid: { color: '#2a2a3e' }
+        }
+      }
+    }
+  });
+  
+  // Performance Chart
+  const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+  new Chart(performanceCtx, {
+    type: 'scatter',
+    data: {
+      datasets: [{
+        label: 'Properties',
+        data: properties.map(p => ({x: p.yield, y: p.occupancy})),
+        backgroundColor: '#7c3aed',
+        borderColor: '#7c3aed',
+        pointRadius: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { 
+        legend: { labels: { color: '#a0a0b0' } },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              const property = properties[context.dataIndex];
+              return property.name + ': ' + property.yield + '% yield, ' + property.occupancy + '% occupancy';
+            }
+          }
+        }
+      },
+      scales: {
+        x: { 
+          title: { display: true, text: 'Annual Yield (%)', color: '#a0a0b0' },
+          ticks: { color: '#a0a0b0' },
+          grid: { color: '#2a2a3e' }
+        },
+        y: { 
+          title: { display: true, text: 'Occupancy (%)', color: '#a0a0b0' },
+          ticks: { color: '#a0a0b0' },
+          grid: { color: '#2a2a3e' }
+        }
+      }
+    }
+  });
+}
+
+// Initialize dashboard on load
+window.onload = function() {
+  initializeDashboard();
+  
+  // Auto-select first property
+  setTimeout(() => {
+    selectProperty(0);
+  }, 1000);
+}
+</script>
+</body>
+</html>
