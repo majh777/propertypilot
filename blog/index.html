@@ -26,9 +26,8 @@ body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;l
 .hero h1{font-size:2.8em;font-weight:800;background:linear-gradient(135deg,#7c3aed,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
 .hero p{font-size:1.3em;color:#a0a0b0;max-width:700px;margin:0 auto}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
-.blog-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;margin-top:40px}
-@media(max-width:800px){.blog-grid{grid-template-columns:1fr}}
-.featured-post{grid-column:1;background:#1a1a2e;border:1px solid #7c3aed44;border-radius:16px;padding:32px;position:relative}
+.blog-grid{display:grid;grid-template-columns:1fr;gap:32px;margin-top:40px}
+.featured-post{background:#1a1a2e;border:1px solid #7c3aed44;border-radius:16px;padding:32px;position:relative}
 .featured-post::before{content:'Featured';position:absolute;top:16px;right:16px;background:#7c3aed;color:#fff;padding:4px 12px;border-radius:12px;font-size:.8em}
 .featured-post h2{font-size:1.8em;margin-bottom:12px}
 .featured-post h2 a{color:#e0e0e0;text-decoration:none}
@@ -36,8 +35,8 @@ body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;l
 .featured-post .excerpt{color:#a0a0b0;font-size:1em;margin-bottom:16px;line-height:1.6}
 .article-meta{font-size:.85em;color:#888;margin-bottom:16px}
 .read-time{color:#7c3aed}
-.posts-grid{grid-column:2 / 4;display:grid;grid-template-columns:1fr 1fr;gap:24px}
-@media(max-width:800px){.posts-grid{grid-column:1;grid-template-columns:1fr}}
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:24px;margin-top:32px}
+.section-title{font-size:2em;margin:40px 0 20px;color:#4ade80;font-weight:600}
 .blog-post{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:24px;transition:border-color .2s}
 .blog-post:hover{border-color:#7c3aed44}
 .blog-post h3{font-size:1.2em;margin-bottom:8px}
@@ -78,9 +77,191 @@ body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;l
       <p class="excerpt">A comprehensive 4,000-word guide covering everything from AI-powered lead generation to automated property valuation models. This definitive playbook shows real estate professionals how to implement AI across every aspect of their business, complete with case studies, tool recommendations, and step-by-step implementation strategies.</p>
     </article>
 
-    <!-- Regular Posts Grid -->
+    <!-- Recent Articles Section -->
+    <h2 class="section-title">Latest AI & Property Management Insights</h2>
+    
     <div class="posts-grid">
       
+      <article class="blog-post">
+        <div class="article-meta">March 3, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-disaster-recovery-planning.html">AI Disaster Recovery Planning</a></h3>
+        <p class="excerpt">Smart emergency preparedness and automated disaster recovery for comprehensive property protection.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 3, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="property-accessibility-ai-compliance.html">Property Accessibility & AI Compliance</a></h3>
+        <p class="excerpt">Smart ADA solutions and automated accessibility monitoring for comprehensive compliance management.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 3, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-pest-control-management.html">AI Pest Control Management</a></h3>
+        <p class="excerpt">Smart detection and prevention systems for effective property pest control and tenant satisfaction.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 3, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="real-estate-crowdfunding-ai.html">AI in Real Estate Crowdfunding</a></h3>
+        <p class="excerpt">Smart investment platforms with AI-powered risk analysis and intelligent matching systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 3, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-parking-management-optimization.html">AI Parking Management & Optimization</a></h3>
+        <p class="excerpt">Smart space allocation and revenue growth through AI-powered parking management systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 3, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="iot-sensors-property-management.html">IoT Sensors in Property Management</a></h3>
+        <p class="excerpt">Smart building automation and monitoring systems for enhanced property operations.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 3, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-water-management-buildings.html">AI Water Management in Buildings</a></h3>
+        <p class="excerpt">Smart conservation and optimization systems for efficient building water management.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 3, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="virtual-tours-ai-real-estate.html">Virtual Tours & AI in Real Estate</a></h3>
+        <p class="excerpt">Immersive property experiences and intelligent tour technology for modern real estate marketing.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 3, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-building-safety-compliance.html">AI Building Safety & Compliance</a></h3>
+        <p class="excerpt">Automated monitoring and intelligent compliance management for building safety and regulations.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="property-market-cycles-ai-prediction.html">Property Market Cycles & AI Prediction</a></h3>
+        <p class="excerpt">Intelligent forecasting and market timing strategies using AI-powered cycle analysis.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-real-estate-marketing-automation.html">AI Real Estate Marketing Automation</a></h3>
+        <p class="excerpt">Smart campaigns and lead generation through AI-powered marketing automation systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="remote-property-management-ai.html">Remote Property Management with AI</a></h3>
+        <p class="excerpt">Digital solutions and virtual management systems for efficient remote property operations.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-affordable-housing-solutions.html">AI Affordable Housing Solutions</a></h3>
+        <p class="excerpt">Technology innovations for accessible housing development and management optimization.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="property-data-analytics-beginners.html">Property Data Analytics for Beginners</a></h3>
+        <p class="excerpt">Essential analytics and insights guide for data-driven property management decisions.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-facility-management-guide.html">AI Facility Management Guide</a></h3>
+        <p class="excerpt">Comprehensive automation and optimization strategies for modern facility management operations.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="real-estate-sentiment-analysis.html">Real Estate Sentiment Analysis</a></h3>
+        <p class="excerpt">Market intelligence and opinion monitoring through AI-powered sentiment analysis systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-mortgage-processing.html">AI Mortgage Processing</a></h3>
+        <p class="excerpt">Automated applications and intelligent underwriting for streamlined mortgage processing.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="smart-city-real-estate-impact.html">Smart City Real Estate Impact</a></h3>
+        <p class="excerpt">Urban technology effects and development opportunities in smart city real estate markets.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-construction-cost-estimation.html">AI Construction Cost Estimation</a></h3>
+        <p class="excerpt">Accurate project budgeting and cost prediction through AI-powered estimation systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="green-building-ai-sustainability.html">Green Building AI & Sustainability</a></h3>
+        <p class="excerpt">Environmental optimization and eco-friendly management through AI-powered sustainability systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-property-tax-optimization.html">AI Property Tax Optimization</a></h3>
+        <p class="excerpt">Smart assessment and appeal strategies using AI-powered property tax optimization systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="blockchain-ai-property-transactions.html">Blockchain & AI Property Transactions</a></h3>
+        <p class="excerpt">Secure transactions and smart contracts through blockchain and AI-powered property systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-commercial-real-estate-trends.html">AI Commercial Real Estate Trends</a></h3>
+        <p class="excerpt">Market insights and technology adoption patterns in AI-driven commercial real estate.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="chatbot-property-management.html">Chatbot Property Management</a></h3>
+        <p class="excerpt">Automated communication and tenant support through intelligent chatbot systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="predictive-analytics-real-estate.html">Predictive Analytics in Real Estate</a></h3>
+        <p class="excerpt">Forecasting and decision support through advanced predictive analytics in real estate.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-tenant-retention-strategies.html">AI Tenant Retention Strategies</a></h3>
+        <p class="excerpt">Smart engagement and satisfaction optimization for improved tenant retention rates.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="computer-vision-property-inspection.html">Computer Vision Property Inspection</a></h3>
+        <p class="excerpt">Automated assessment and defect detection through AI-powered visual inspection systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="nlp-lease-analysis.html">NLP Lease Analysis</a></h3>
+        <p class="excerpt">Smart contract review and risk identification through natural language processing systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="machine-learning-rent-prediction.html">Machine Learning Rent Prediction</a></h3>
+        <p class="excerpt">Accurate pricing and market analysis through machine learning-powered rent prediction systems.</p>
+      </article>
+
+      <article class="blog-post">
+        <div class="article-meta">March 2, 2026 • <span class="read-time">8 min read</span></div>
+        <h3><a href="ai-property-insurance-optimization.html">AI Property Insurance Optimization</a></h3>
+        <p class="excerpt">Smart coverage and cost reduction through AI-powered property insurance optimization.</p>
+      </article>
+
       <article class="blog-post">
         <div class="article-meta">March 1, 2026 • <span class="read-time">8 min read</span></div>
         <h3><a href="how-ai-is-transforming-property-management-2026.html">How AI is Transforming Property Management in 2026</a></h3>
@@ -154,7 +335,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;l
 <div class="cta-section">
   <h2 style="margin-bottom:20px">Ready to Transform Your Real Estate Business?</h2>
   <p style="color:#a0a0b0;margin-bottom:30px">Join hundreds of agents already using PropertyPilot's AI automation toolkit.</p>
-  <a href="../#pricing" class="cta-btn">Get PropertyPilot — $297</a>
+  <a href="../roi-calculator.html" class="cta-btn">Calculate Your ROI — Free</a>
 </div>
 
 <div class="footer">
