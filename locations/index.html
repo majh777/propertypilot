@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PropertyPilot by Location - AI Property Management for Major Cities | PropertyPilot</title>
-<meta name="description" content="Discover how PropertyPilot's AI automation adapts to your city's unique property management challenges. Local market intelligence for major US cities.">
+<title>AI Property Management by City — PropertyPilot</title>
+<meta name="description" content="Discover how PropertyPilot's AI automation adapts to your city's unique rental market challenges. Local expertise for 25+ major metropolitan areas.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://majh777.github.io/propertypilot/locations/">
-<meta property="og:title" content="PropertyPilot by Location - AI Property Management for Major Cities">
-<meta property="og:description" content="Local market intelligence and AI automation tailored for major US property markets.">
+<meta property="og:title" content="AI Property Management by City — PropertyPilot">
+<meta property="og:description" content="Discover PropertyPilot's city-specific AI solutions for property management.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://majh777.github.io/propertypilot/locations/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
@@ -21,232 +21,242 @@ body{font-family:'Inter',system-ui,sans-serif;background:#0f0f1a;color:#e0e0e0;l
 .cta-btn{display:inline-block;padding:16px 40px;background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;text-decoration:none;border-radius:12px;font-weight:700;font-size:1.1em;transition:transform .2s}
 .cta-btn:hover{transform:scale(1.05)}
 .section{max-width:1000px;margin:0 auto;padding:60px 20px}
-.nav-section{background:#1a1a2e;border-bottom:1px solid #2a2a3e;padding:20px 0}
-.nav-container{max-width:800px;margin:0 auto;text-align:center}
-.nav-link{color:#a0a0b0;text-decoration:none;padding:8px 16px;border:1px solid #2a2a3e;border-radius:8px;font-size:0.9em;transition:all 0.3s;margin:0 5px}
-.nav-link:hover{color:#7c3aed;border-color:#7c3aed;background:#7c3aed11}
-.locations-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin:40px 0}
-.location-card{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:24px;transition:transform 0.3s,border-color 0.3s}
-.location-card:hover{transform:translateY(-4px);border-color:#7c3aed}
-.card-icon{font-size:2em;margin-bottom:12px;text-align:center}
-.card-title{color:#7c3aed;margin-bottom:8px;font-size:1.2em;font-weight:600;text-align:center}
-.card-description{color:#a0a0b0;font-size:0.9em;margin-bottom:16px;text-align:center;line-height:1.5}
-.card-link{display:block;text-decoration:none;color:inherit}
-.region-title{color:#7c3aed;font-size:1.8em;margin:60px 0 30px;text-align:center}
-.stats-banner{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:40px;margin:40px 0;text-align:center}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:30px}
-.stat-item{text-align:center}
-.stat-number{font-size:2.5em;font-weight:800;color:#7c3aed;margin-bottom:4px}
-.stat-label{color:#a0a0b0;font-size:0.9em}
-.footer{text-align:center;padding:40px;color:#666;font-size:.85em;border-top:1px solid:#1e1e2e}
-.footer a{color:#7c3aed;text-decoration:none}
+.city-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin:40px 0}
+.city-card{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:24px;text-align:center;transition:transform .2s}
+.city-card:hover{transform:translateY(-4px);border-color:#7c3aed44}
+.city-card h3{color:#7c3aed;margin-bottom:8px;font-size:1.3em}
+.city-card p{color:#a0a0b0;font-size:.9em;margin-bottom:16px}
+.city-link{display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;font-size:.9em}
+.region-header{color:#7c3aed;font-size:1.5em;margin:40px 0 20px;text-align:center}
+.nav{background:#12121a;padding:15px 20px;text-align:center}
+.nav a{color:#7c3aed;text-decoration:none;margin:0 15px;font-weight:600}
+.nav a:hover{color:#a78bfa}
+.search-box{max-width:400px;margin:30px auto;position:relative}
+.search-input{width:100%;padding:12px 16px;border:1px solid #2a2a3e;border-radius:8px;background:#1a1a2e;color:#e0e0e0;font-size:1em}
+.search-input:focus{outline:none;border-color:#7c3aed}
 </style>
 </head>
 <body>
 
-<nav class="nav-section">
-<div class="nav-container">
-<a href="../index.html" class="nav-link">← Back to PropertyPilot</a>
-<a href="../comparisons/" class="nav-link">Platform Comparisons</a>
-</div>
+<nav class="nav">
+    <a href="../index.html">Home</a>
+    <a href="../comparisons/">Comparisons</a>
+    <a href="../pricing.html">Pricing</a>
 </nav>
 
-<div class="hero">
-<div class="badge">Local Market Intelligence</div>
-<h1>PropertyPilot by Location</h1>
-<p>AI-powered property management optimized for your city's unique market dynamics</p>
-<a href="../index.html#pricing" class="cta-btn">Find Your Market</a>
-</div>
+<section class="hero">
+    <div class="badge">🌎 25+ Cities Covered</div>
+    <h1>AI Property Management by City</h1>
+    <p>Discover how PropertyPilot's AI automation adapts to your city's unique rental market challenges, regulations, and opportunities</p>
+    
+    <div class="search-box">
+        <input type="text" class="search-input" placeholder="Search cities..." id="citySearch">
+    </div>
+</section>
 
-<div class="section">
-<div class="stats-banner">
-<div class="stats-grid">
-<div class="stat-item">
-<div class="stat-number">19</div>
-<div class="stat-label">Major Markets</div>
-</div>
-<div class="stat-item">
-<div class="stat-number">500+</div>
-<div class="stat-label">Local Regulations</div>
-</div>
-<div class="stat-item">
-<div class="stat-number">24/7</div>
-<div class="stat-label">Market Monitoring</div>
-</div>
-<div class="stat-item">
-<div class="stat-number">95%</div>
-<div class="stat-label">Local Compliance</div>
-</div>
-</div>
-</div>
-</div>
+<section class="section">
+    <h2>Choose Your Market</h2>
+    <p>PropertyPilot's AI understands that every rental market is unique. From NYC's rent stabilization to Austin's explosive growth, our automation adapts to local regulations, tenant preferences, and market dynamics.</p>
 
-<div class="section">
-<h2 class="region-title">🌆 Major Metro Markets</h2>
-<div class="locations-grid">
-<div class="location-card">
-<a href="new-york.html" class="card-link">
-<div class="card-icon">🗽</div>
-<h3 class="card-title">New York City</h3>
-<p class="card-description">Navigate rent stabilization, high-volume operations, and complex NYC housing regulations with AI automation</p>
-</a>
-</div>
+    <div class="region-header">🏙️ Major Metropolitan Markets</div>
+    <div class="city-grid" id="majorCities">
+        <div class="city-card">
+            <h3>🗽 New York City</h3>
+            <p>Navigate rent stabilization, housing court, and the world's most complex rental regulations</p>
+            <a href="new-york.html" class="city-link">Explore NYC</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🌴 Los Angeles</h3>
+            <p>Master 88 cities, RSO compliance, and entertainment industry tenant management</p>
+            <a href="los-angeles.html" class="city-link">Explore LA</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🌬️ Chicago</h3>
+            <p>Handle RLTO compliance, extreme weather, and L train proximity pricing</p>
+            <a href="chicago.html" class="city-link">Explore Chicago</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🌉 San Francisco</h3>
+            <p>Navigate the world's strictest rent control and tech industry screening</p>
+            <a href="san-francisco.html" class="city-link">Explore SF</a>
+        </div>
+    </div>
 
-<div class="location-card">
-<a href="los-angeles.html" class="card-link">
-<div class="card-icon">🌴</div>
-<h3 class="card-title">Los Angeles</h3>
-<p class="card-description">Optimize for RSO compliance, entertainment industry cycles, and diverse LA neighborhood dynamics</p>
-</a>
-</div>
+    <div class="region-header">🔥 High-Growth Markets</div>
+    <div class="city-grid" id="growthCities">
+        <div class="city-card">
+            <h3>🌵 Phoenix</h3>
+            <p>Handle explosive growth, extreme heat, and water conservation requirements</p>
+            <a href="phoenix.html" class="city-link">Explore Phoenix</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🎵 Austin</h3>
+            <p>Manage tech relocations, university housing, and rapid neighborhood change</p>
+            <a href="austin.html" class="city-link">Explore Austin</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🏔️ Denver</h3>
+            <p>Serve outdoor enthusiasts with bike storage and high-altitude climate management</p>
+            <a href="denver.html" class="city-link">Explore Denver</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🎵 Nashville</h3>
+            <p>Handle music industry income and explosive corporate growth</p>
+            <a href="nashville.html" class="city-link">Explore Nashville</a>
+        </div>
+    </div>
 
-<div class="location-card">
-<a href="chicago.html" class="card-link">
-<div class="card-icon">🏙️</div>
-<h3 class="card-title">Chicago</h3>
-<p class="card-description">Master RLTO compliance, winter weather challenges, and Windy City market patterns</p>
-</a>
-</div>
+    <div class="region-header">💻 Tech Hubs</div>
+    <div class="city-grid" id="techCities">
+        <div class="city-card">
+            <h3>☔ Seattle</h3>
+            <p>Manage Amazon employees, strict tenant protections, and rain season challenges</p>
+            <a href="seattle.html" class="city-link">Explore Seattle</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>💻 San Jose</h3>
+            <p>Handle Silicon Valley's premium market and complex tech compensation</p>
+            <a href="san-jose.html" class="city-link">Explore San Jose</a>
+        </div>
+    </div>
 
-<div class="location-card">
-<a href="houston.html" class="card-link">
-<div class="card-icon">🛢️</div>
-<h3 class="card-title">Houston</h3>
-<p class="card-description">Navigate energy industry cycles, hurricane preparedness, and rapid growth in America's energy capital</p>
-</a>
-</div>
+    <div class="region-header">🏛️ Government & Financial Centers</div>
+    <div class="city-grid" id="govCities">
+        <div class="city-card">
+            <h3>🏛️ Washington DC</h3>
+            <p>Serve government workers with security clearance verification and Metro access</p>
+            <a href="washington-dc.html" class="city-link">Explore DC</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🏦 Charlotte</h3>
+            <p>Handle banking professionals and light rail development opportunities</p>
+            <a href="charlotte.html" class="city-link">Explore Charlotte</a>
+        </div>
+    </div>
 
-<div class="location-card">
-<a href="miami.html" class="card-link">
-<div class="card-icon">🌴</div>
-<h3 class="card-title">Miami</h3>
-<p class="card-description">Handle international tenants, seasonal tourism, and luxury market dynamics in the Magic City</p>
-</a>
-</div>
+    <div class="region-header">⚓ Military & Industrial Markets</div>
+    <div class="city-grid" id="militaryCities">
+        <div class="city-card">
+            <h3>🏰 San Antonio</h3>
+            <p>Coordinate with military PCS moves and bilingual community needs</p>
+            <a href="san-antonio.html" class="city-link">Explore San Antonio</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🏄 San Diego</h3>
+            <p>Manage coastal luxury properties and military housing coordination</p>
+            <a href="san-diego.html" class="city-link">Explore San Diego</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>⚓ Jacksonville</h3>
+            <p>Handle Navy personnel and America's largest city by area</p>
+            <a href="jacksonville.html" class="city-link">Explore Jacksonville</a>
+        </div>
+    </div>
 
-<div class="location-card">
-<a href="dallas.html" class="card-link">
-<div class="card-icon">🏙️</div>
-<h3 class="card-title">Dallas</h3>
-<p class="card-description">Optimize for corporate relocations, rapid suburban growth, and DFW business hub dynamics</p>
-</a>
-</div>
-</div>
+    <div class="region-header">🏢 Business & Energy Centers</div>
+    <div class="city-grid" id="businessCities">
+        <div class="city-card">
+            <h3>⚡ Houston</h3>
+            <p>Navigate energy sector cycles, flooding challenges, and international tenants</p>
+            <a href="houston.html" class="city-link">Explore Houston</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🏢 Dallas</h3>
+            <p>Manage corporate relocations and luxury suburban developments</p>
+            <a href="dallas.html" class="city-link">Explore Dallas</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🛢️ Oklahoma City</h3>
+            <p>Handle oil industry cycles and tornado preparedness protocols</p>
+            <a href="oklahoma-city.html" class="city-link">Explore OKC</a>
+        </div>
+    </div>
 
-<h2 class="region-title">🌊 West Coast Markets</h2>
-<div class="locations-grid">
-<div class="location-card">
-<a href="seattle.html" class="card-link">
-<div class="card-icon">☂️</div>
-<h3 class="card-title">Seattle</h3>
-<p class="card-description">Navigate strict tenant laws, tech industry cycles, and Pacific Northwest market dynamics</p>
-</a>
-</div>
+    <div class="region-header">🏛️ Historic & Cultural Centers</div>
+    <div class="city-grid" id="historicCities">
+        <div class="city-card">
+            <h3>🔔 Philadelphia</h3>
+            <p>Balance historic preservation with modern amenities and university housing</p>
+            <a href="philadelphia.html" class="city-link">Explore Philly</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🌰 Columbus</h3>
+            <p>Coordinate Ohio State housing and corporate expansion management</p>
+            <a href="columbus.html" class="city-link">Explore Columbus</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🏁 Indianapolis</h3>
+            <p>Handle Indy 500 crowds and motorsports tourism demands</p>
+            <a href="indianapolis.html" class="city-link">Explore Indy</a>
+        </div>
+    </div>
 
-<div class="location-card">
-<a href="san-francisco.html" class="card-link">
-<div class="card-icon">🌉</div>
-<h3 class="card-title">San Francisco</h3>
-<p class="card-description">Master rent control compliance and tech industry volatility in the Bay Area</p>
-</a>
-</div>
+    <div class="region-header">🌴 Specialty Markets</div>
+    <div class="city-grid" id="specialtyCities">
+        <div class="city-card">
+            <h3>🏝️ Miami</h3>
+            <p>Serve international luxury market with hurricane preparedness</p>
+            <a href="miami.html" class="city-link">Explore Miami</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🍑 Atlanta</h3>
+            <p>Handle film industry and corporate headquarters housing</p>
+            <a href="atlanta.html" class="city-link">Explore Atlanta</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🎰 Las Vegas</h3>
+            <p>Manage 24/7 economy and entertainment industry workers</p>
+            <a href="las-vegas.html" class="city-link">Explore Vegas</a>
+        </div>
+        
+        <div class="city-card">
+            <h3>🌿 Portland</h3>
+            <p>Navigate strict tenant protections and eco-conscious community</p>
+            <a href="portland.html" class="city-link">Explore Portland</a>
+        </div>
+    </div>
 
-<div class="location-card">
-<a href="denver.html" class="card-link">
-<div class="card-icon">🏔️</div>
-<h3 class="card-title">Denver</h3>
-<p class="card-description">Optimize for outdoor lifestyle premiums and Mile High City growth patterns</p>
-</a>
-</div>
+    <div style="text-align:center;margin:60px 0">
+        <h3>Don't See Your City?</h3>
+        <p style="margin:20px 0">PropertyPilot's AI adapts to any market. We're constantly expanding to new cities based on demand.</p>
+        <a href="#" class="cta-btn">Request Your City</a>
+    </div>
+</section>
 
-<div class="location-card">
-<a href="portland.html" class="card-link">
-<div class="card-icon">🌲</div>
-<h3 class="card-title">Portland</h3>
-<p class="card-description">Handle strict tenant protections and Silicon Forest tech sector dynamics</p>
-</a>
-</div>
-
-<div class="location-card">
-<a href="san-diego.html" class="card-link">
-<div class="card-icon">🏖️</div>
-<h3 class="card-title">San Diego</h3>
-<p class="card-description">Optimize for biotech professionals and coastal lifestyle market premiums</p>
-</a>
-</div>
-
-<div class="location-card">
-<a href="las-vegas.html" class="card-link">
-<div class="card-icon">🎰</div>
-<h3 class="card-title">Las Vegas</h3>
-<p class="card-description">Navigate tourism-driven economy and rapid suburban growth dynamics</p>
-</a>
-</div>
-</div>
-
-<h2 class="region-title">🎵 Growing Markets</h2>
-<div class="locations-grid">
-<div class="location-card">
-<a href="atlanta.html" class="card-link">
-<div class="card-icon">🍑</div>
-<h3 class="card-title">Atlanta</h3>
-<p class="card-description">Optimize for film industry boom and Fortune 500 headquarters hub dynamics</p>
-</a>
-</div>
-
-<div class="location-card">
-<a href="phoenix.html" class="card-link">
-<div class="card-icon">🌵</div>
-<h3 class="card-title">Phoenix</h3>
-<p class="card-description">Navigate rapid growth, snowbird patterns, and Valley of the Sun expansion</p>
-</a>
-</div>
-
-<div class="location-card">
-<a href="boston.html" class="card-link">
-<div class="card-icon">🦞</div>
-<h3 class="card-title">Boston</h3>
-<p class="card-description">Handle student housing cycles and biotech professional market dynamics</p>
-</a>
-</div>
-
-<div class="location-card">
-<a href="austin.html" class="card-link">
-<div class="card-icon">🎵</div>
-<h3 class="card-title">Austin</h3>
-<p class="card-description">Optimize for Silicon Hills tech boom and music industry housing demands</p>
-</a>
-</div>
-
-<div class="location-card">
-<a href="nashville.html" class="card-link">
-<div class="card-icon">🎶</div>
-<h3 class="card-title">Nashville</h3>
-<p class="card-description">Navigate entertainment industry and rapid corporate expansion in Music City</p>
-</a>
-</div>
-
-<div class="location-card">
-<a href="charlotte.html" class="card-link">
-<div class="card-icon">🏛️</div>
-<h3 class="card-title">Charlotte</h3>
-<p class="card-description">Optimize for banking center professionals and New South growth dynamics</p>
-</a>
-</div>
-</div>
-</div>
-
-<div class="section" style="text-align:center;padding:60px 20px">
-<div style="background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:30px;max-width:600px;margin:0 auto">
-<h3 style="color:#f59e0b;margin-bottom:12px">Ready to Optimize Your Local Market?</h3>
-<p style="color:#c0c0d0;margin-bottom:20px">PropertyPilot's AI adapts to your city's unique regulations and market dynamics</p>
-<a href="../index.html#pricing" class="cta-btn">Start Local Trial</a>
-</div>
-</div>
-
-<footer class="footer">
-<p>&copy; 2024 PropertyPilot. AI-powered property management automation. <a href="../index.html">Back to PropertyPilot</a></p>
-</footer>
+<script>
+// Simple search functionality
+document.getElementById('citySearch').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const cityCards = document.querySelectorAll('.city-card');
+    
+    cityCards.forEach(card => {
+        const cityName = card.querySelector('h3').textContent.toLowerCase();
+        const cityDesc = card.querySelector('p').textContent.toLowerCase();
+        
+        if (cityName.includes(searchTerm) || cityDesc.includes(searchTerm)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = searchTerm === '' ? 'block' : 'none';
+        }
+    });
+});
+</script>
 
 </body>
 </html>
