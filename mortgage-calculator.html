@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mortgage Calculator — PropertyPilot</title>
+<meta name="description" content="Free mortgage calculator with principal, rate, term, taxes, insurance, and PMI. See monthly payments and full amortization schedule.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://majh777.github.io/propertypilot/mortgage-calculator.html">
+<meta property="og:title" content="Mortgage Calculator — PropertyPilot">
+<meta property="og:description" content="Free mortgage calculator with monthly payments, taxes, insurance, PMI, and amortization schedule.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://majh777.github.io/propertypilot/mortgage-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mortgage Calculator — PropertyPilot">
+<meta name="twitter:description" content="Free mortgage calculator with monthly payments, taxes, insurance, PMI, and amortization schedule.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Mortgage Calculator",
+  "description": "Free mortgage calculator with principal, rate, term, taxes, insurance, and PMI breakdown",
+  "url": "https://majh777.github.io/propertypilot/mortgage-calculator.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web"
+}
+</script>
+</head>
+<body>
+
+<div class="pp-hero">
+  <div class="pp-badge">Free Tool</div>
+  <h1>Mortgage Calculator</h1>
+  <p>Calculate your monthly mortgage payment including principal, interest, taxes, insurance, and PMI.</p>
+</div>
+
+<section class="pp-section">
+  <div class="pp-grid-2" style="gap:40px">
+
+    <!-- Input Panel -->
+    <div class="pp-card" style="padding:32px">
+      <h2 style="color:var(--accent);margin-bottom:24px;font-size:1.3em">Loan Details</h2>
+
+      <div class="pp-input-group">
+        <label for="mortPrincipal">Home Price ($)</label>
+        <input type="number" id="mortPrincipal" class="pp-input" value="400000" min="0">
+      </div>
+
+      <div class="pp-input-group">
+        <label for="mortDown">Down Payment (%)</label>
+        <input type="number" id="mortDown" class="pp-input" value="20" min="0" max="100">
+      </div>
+
+      <div class="pp-input-group">
+        <label for="mortRate">Interest Rate (%)</label>
+        <input type="number" id="mortRate" class="pp-input" value="6.5" min="0" max="30" step="0.125">
+      </div>
+
+      <div class="pp-input-group">
+        <label for="mortTerm">Loan Term (years)</label>
+        <select id="mortTerm" class="pp-select">
+          <option value="30" selected>30 years</option>
+          <option value="20">20 years</option>
+          <option value="15">15 years</option>
+          <option value="10">10 years</option>
+        </select>
+      </div>
+
+      <div class="pp-input-group">
+        <label for="mortTaxes">Annual Property Taxes ($)</label>
+        <input type="number" id="mortTaxes" class="pp-input" value="4800" min="0">
+      </div>
+
+      <div class="pp-input-group">
+        <label for="mortInsurance">Annual Insurance ($)</label>
+        <input type="number" id="mortInsurance" class="pp-input" value="1500" min="0">
+      </div>
+
+      <div class="pp-input-group">
+        <label for="mortPMI">Annual PMI ($) <span style="font-weight:400;color:var(--text-muted)">— auto-calculated if down &lt; 20%</span></label>
+        <input type="number" id="mortPMI" class="pp-input" value="0" min="0">
+      </div>
+
+      <button class="pp-btn" style="width:100%;margin-top:8px" onclick="calculateMortgage()">Calculate Payment</button>
+    </div>
+
+    <!-- Results Panel -->
+    <div>
+      <div id="mortResults" style="opacity:0;transform:translateY(20px);transition:all .5s ease">
+        <h2 style="color:var(--accent);margin-bottom:20px;font-size:1.3em">Monthly Payment Breakdown</h2>
+
+        <div class="pp-result" style="border-color:var(--accent);border-width:2px">
+          <div class="pp-result-label" style="margin-bottom:4px">Total Monthly Payment</div>
+          <div class="pp-result-value" id="mortResultMonthly" style="font-size:2.5em">—</div>
+        </div>
+
+        <div class="pp-grid-2" style="gap:12px;margin-top:16px">
+          <div class="pp-result">
+            <div class="pp-result-label">Principal & Interest</div>
+            <div class="pp-result-value" id="mortResultPI" style="font-size:1.4em">—</div>
+          </div>
+          <div class="pp-result">
+            <div class="pp-result-label">Property Taxes</div>
+            <div class="pp-result-value" id="mortResultTax" style="font-size:1.4em">—</div>
+          </div>
+          <div class="pp-result">
+            <div class="pp-result-label">Insurance</div>
+            <div class="pp-result-value" id="mortResultIns" style="font-size:1.4em">—</div>
+          </div>
+          <div class="pp-result">
+            <div class="pp-result-label">PMI</div>
+            <div class="pp-result-value" id="mortResultPMI" style="font-size:1.4em">—</div>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;padding:20px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md)">
+          <h3 style="color:var(--text-heading);margin-bottom:12px;font-size:1.1em">Loan Summary</h3>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-color)">
+            <span style="color:var(--text-secondary)">Loan Amount</span>
+            <span style="font-weight:600" id="mortResultLoan">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-color)">
+            <span style="color:var(--text-secondary)">Total Interest Paid</span>
+            <span style="font-weight:600;color:var(--red)" id="mortResultInterest">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0">
+            <span style="color:var(--text-secondary)">Total Cost of Loan</span>
+            <span style="font-weight:600" id="mortResultTotal">—</span>
+          </div>
+        </div>
+
+        <!-- Amortization Schedule -->
+        <div style="margin-top:24px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:20px;overflow-x:auto">
+          <h3 style="color:var(--text-heading);margin-bottom:8px;font-size:1.1em">Amortization Schedule</h3>
+          <div id="mortSchedule"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related Tools -->
+<section class="pp-section-alt">
+  <div class="pp-section">
+    <h2 class="pp-section-title">More Real Estate Tools</h2>
+    <div class="pp-grid-3" style="margin-top:24px">
+      <a href="roi-calculator.html" class="pp-card" style="text-decoration:none"><h3>Investment ROI Calculator</h3><p>Analyze rental property returns with cap rate and cash-on-cash calculations.</p></a>
+      <a href="ai-analysis.html" class="pp-card" style="text-decoration:none"><h3>AI Property Analysis</h3><p>Get an instant AI-powered investment analysis with scoring and risk factors.</p></a>
+      <a href="valuation-tool.html" class="pp-card" style="text-decoration:none"><h3>Property Valuation</h3><p>AI-powered property valuation with comparable analysis.</p></a>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/site.js"></script>
+<script src="assets/js/tools.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function() { calculateMortgage(); });</script>
+</body>
+</html>

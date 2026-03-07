@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Property Analysis Tool — PropertyPilot</title>
+<meta name="description" content="Free AI property analysis tool. Enter property details and get an instant investment analysis with scoring, risk factors, opportunities, and key metrics.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://majh777.github.io/propertypilot/ai-analysis.html">
+<meta property="og:title" content="AI Property Analysis Tool — PropertyPilot">
+<meta property="og:description" content="Free AI property analysis: instant investment scoring, risk factors, and opportunity assessment.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://majh777.github.io/propertypilot/ai-analysis.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Property Analysis Tool — PropertyPilot">
+<meta name="twitter:description" content="Free AI property analysis: instant investment scoring, risk factors, and opportunity assessment.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Property Analysis Tool",
+  "description": "AI-powered property investment analysis with scoring, risk assessment, and opportunity identification",
+  "url": "https://majh777.github.io/propertypilot/ai-analysis.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web"
+}
+</script>
+</head>
+<body>
+
+<div class="pp-hero">
+  <div class="pp-badge">AI-Powered</div>
+  <h1>AI Property Analysis</h1>
+  <p>Enter property details and get an instant AI-powered investment analysis with scoring, risk factors, and opportunities.</p>
+</div>
+
+<section class="pp-section">
+  <div class="pp-grid-2" style="gap:40px">
+
+    <!-- Input Panel -->
+    <div class="pp-card" style="padding:32px">
+      <h2 style="color:var(--accent);margin-bottom:24px;font-size:1.3em">Property Details</h2>
+
+      <div class="pp-input-group">
+        <label for="aiPropType">Property Type</label>
+        <select id="aiPropType" class="pp-select">
+          <option value="single-family">Single Family</option>
+          <option value="condo">Condo / Townhouse</option>
+          <option value="multi-family">Multi-Family</option>
+          <option value="commercial">Commercial</option>
+        </select>
+      </div>
+
+      <div class="pp-input-group">
+        <label for="aiAddress">Address / Location</label>
+        <input type="text" id="aiAddress" class="pp-input" placeholder="123 Main St, City, State">
+      </div>
+
+      <div class="pp-input-group">
+        <label for="aiPrice">Asking Price ($)</label>
+        <input type="number" id="aiPrice" class="pp-input" value="350000" min="0">
+      </div>
+
+      <div class="pp-grid-2" style="gap:16px">
+        <div class="pp-input-group">
+          <label for="aiSqft">Square Footage</label>
+          <input type="number" id="aiSqft" class="pp-input" value="1800" min="0">
+        </div>
+        <div class="pp-input-group">
+          <label for="aiYear">Year Built</label>
+          <input type="number" id="aiYear" class="pp-input" value="1995" min="1800" max="2026">
+        </div>
+      </div>
+
+      <div class="pp-grid-2" style="gap:16px">
+        <div class="pp-input-group">
+          <label for="aiBed">Bedrooms</label>
+          <input type="number" id="aiBed" class="pp-input" value="3" min="0">
+        </div>
+        <div class="pp-input-group">
+          <label for="aiBath">Bathrooms</label>
+          <input type="number" id="aiBath" class="pp-input" value="2" min="0" step="0.5">
+        </div>
+      </div>
+
+      <div class="pp-input-group">
+        <label for="aiRent">Expected Monthly Rent ($)</label>
+        <input type="number" id="aiRent" class="pp-input" value="2200" min="0">
+      </div>
+
+      <div class="pp-input-group">
+        <label for="aiCondition">Property Condition</label>
+        <select id="aiCondition" class="pp-select">
+          <option value="excellent">Excellent — Move-in ready, updated</option>
+          <option value="good" selected>Good — Minor cosmetic needs</option>
+          <option value="fair">Fair — Some repairs needed</option>
+          <option value="needs-work">Needs Work — Major renovation</option>
+        </select>
+      </div>
+
+      <button class="pp-btn" style="width:100%;margin-top:8px" onclick="analyzeProperty()">Analyze Property</button>
+    </div>
+
+    <!-- Results Panel -->
+    <div>
+      <div id="aiResults" style="opacity:0;transform:translateY(20px);transition:all .5s ease">
+        <h2 style="color:var(--accent);margin-bottom:20px;font-size:1.3em">AI Analysis Report</h2>
+        <div id="aiReport" class="pp-card" style="padding:28px">
+          <p style="color:var(--text-muted);text-align:center">Click "Analyze Property" to generate your report.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related Tools -->
+<section class="pp-section-alt">
+  <div class="pp-section">
+    <h2 class="pp-section-title">More Real Estate Tools</h2>
+    <div class="pp-grid-3" style="margin-top:24px">
+      <a href="mortgage-calculator.html" class="pp-card" style="text-decoration:none"><h3>Mortgage Calculator</h3><p>Calculate monthly payments with taxes, insurance, PMI, and amortization.</p></a>
+      <a href="roi-calculator.html" class="pp-card" style="text-decoration:none"><h3>Investment ROI Calculator</h3><p>Cap rate, cash-on-cash return, and 5-year projections.</p></a>
+      <a href="valuation-tool.html" class="pp-card" style="text-decoration:none"><h3>Property Valuation</h3><p>AI-powered valuation with comparable analysis.</p></a>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/site.js"></script>
+<script src="assets/js/tools.js"></script>
+</body>
+</html>
