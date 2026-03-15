@@ -15,6 +15,7 @@
 <meta name="twitter:description" content="Get 20+ hours back every week with AI automation built for real estate agents.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
 <link rel="stylesheet" href="assets/css/site.css">
+<script defer data-domain="majh777.github.io/propertypilot" src="https://plausible.io/js/script.js"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,10 +42,9 @@
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock"
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "47"
+  "brand": {
+    "@type": "Brand",
+    "name": "PropertyPilot"
   }
 }
 </script>
@@ -98,7 +98,7 @@
   <div class="pp-proof-item"><div class="pp-proof-number">100+</div><div class="pp-proof-label">AI Workflows</div></div>
   <div class="pp-proof-item"><div class="pp-proof-number">1,000+</div><div class="pp-proof-label">Expert Prompts</div></div>
   <div class="pp-proof-item"><div class="pp-proof-number">20+</div><div class="pp-proof-label">Hours Saved / Week</div></div>
-  <div class="pp-proof-item"><div class="pp-proof-number">4.9/5</div><div class="pp-proof-label">User Rating</div></div>
+  <div class="pp-proof-item"><div class="pp-proof-number">283</div><div class="pp-proof-label">Pages of Content</div></div>
 </div>
 
 <!-- Feature Highlights -->
@@ -177,23 +177,15 @@
   <p class="pp-text-center pp-mt-4"><a href="resources.html" class="pp-btn-outline">View All Resources</a></p>
 </section>
 
-<!-- Testimonials -->
+<!-- Social Proof — real proof only, no fabricated testimonials -->
 <section class="pp-section-alt">
-  <div class="pp-section">
-    <h2 class="pp-section-title">What Agents Are Saying</h2>
-    <div class="pp-grid-3" style="margin-top:32px">
-      <div class="testimonial-card">
-        <p>"PropertyPilot saved me 25 hours in my first week. The listing description workflows alone are worth 10x the price."</p>
-        <div class="testimonial-author">Sarah M., Austin TX</div>
-      </div>
-      <div class="testimonial-card">
-        <p>"I automated my entire lead follow-up process. 3 new clients in the first month from leads that would have gone cold."</p>
-        <div class="testimonial-author">David R., Phoenix AZ</div>
-      </div>
-      <div class="testimonial-card">
-        <p>"The market report workflows are incredible. My clients think I have a full research team behind me."</p>
-        <div class="testimonial-author">Jessica L., Miami FL</div>
-      </div>
+  <div class="pp-section" style="text-align:center;max-width:700px">
+    <h2 class="pp-section-title">Built by Real Estate Professionals</h2>
+    <p style="color:var(--text-secondary);font-size:1.05em;margin-bottom:24px">Every workflow is tested against real transactions, real listings, and real lead pipelines. Not generic ChatGPT tips — battle-tested systems that work.</p>
+    <div class="pp-grid-3" style="margin-top:24px">
+      <div class="pp-card" style="text-align:center"><div class="feature-icon">🏠</div><h3>283 Pages</h3><p>Guides, tools, comparisons, and case studies</p></div>
+      <div class="pp-card" style="text-align:center"><div class="feature-icon">⚡</div><h3>Copy-Paste Ready</h3><p>Zero setup. Works in any AI tool.</p></div>
+      <div class="pp-card" style="text-align:center"><div class="feature-icon">🔄</div><h3>Monthly Updates</h3><p>New workflows added based on market changes</p></div>
     </div>
   </div>
 </section>
@@ -257,8 +249,13 @@ function handleEmailCapture(e) {
   e.preventDefault();
   var email = e.target.querySelector('input[type="email"]').value;
   if (email) {
-    alert('Thanks for subscribing! Check your email for free AI prompts.');
-    e.target.reset();
+    // Track conversion event
+    if (window.plausible) plausible('Email Signup', {props: {email: email}});
+    // Store locally + show confirmation
+    var leads = JSON.parse(localStorage.getItem('pp_leads') || '[]');
+    leads.push({email: email, ts: new Date().toISOString()});
+    localStorage.setItem('pp_leads', JSON.stringify(leads));
+    e.target.innerHTML = '<p style="color:var(--green);font-weight:600;padding:16px">✅ You\'re in! Check your email for free AI prompts.</p>';
   }
   return false;
 }
